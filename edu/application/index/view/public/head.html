@@ -1,0 +1,52 @@
+<header class="navbar-wrapper hui-fadeinT" style="height: 25px;">
+    <div class="navbar navbar-black">
+        <div class="container cl">
+            <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">
+                <img src="__STATIC__/static/h-ui/images/background/newlogo.png"/>
+            </a>
+            <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>
+            <span class="logo navbar-slogan f-l mr-10 hidden-xs">简单 &middot; 免费 &middot; 适合中国网站</span>
+            <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
+            <nav class="nav navbar-nav nav-collapse" role="navigation" id="Hui-navbar">
+                <ul class="cl">
+                    <li class="li litopnav current"><a href="/">
+                        <i class="fa fa-2x fa-shopping-cart"></i><span class="caret">首    页</span>
+                    </a></li>
+                    <li class="li litopnav"><a href="#">
+                        <i class="fa fa-2x fa-shopping-cart"></i><span class="caret">摄影活动</span>
+                    </a></li>
+                    <li class="li litopnav"><a href="#">
+                        <i class="fa fa-2x fa-shopping-cart"></i><span class="caret">图片分享</span>
+                    </a></li>
+
+                    <li class="li litopnav"><a href="#">
+                        <i class="fa fa-2x fa-shopping-cart"></i><span class="caret">联系我们</span>
+                    </a></li>
+                    <li class="li litopnav"><a href="#">
+                        <i class="Hui-iconfont">&#xe642;</i>\<span class="caret">上传</span>
+                    </a></li>
+                    <li   id="login"  class="li " style="display: none; margin-left: 259px;margin-top: 38px">
+                        <!--<input class="btn btn-primary radius hui-animation" type="button" value="淡入" data-tra="hui-bounce">-->
+                        <button   id="login1"  class="btn btn-primary-outline radius size-L hui-fadeinL"   >登录</button>
+                        <button id="sign1"  class="btn btn-primary-outline radius size-L hui-fadeinR" >注册</button></li>
+                    <li   class=" dropDown dropDown_hover" style="margin-left: 287px;"><a  id="logined"  href="#" class="dropDown_A" style="display:none;
+     				min-width: 78px;   font-size: 19px;   margin-top: 45px;
+">{:session('user_info.name')} <i class="Hui-iconfont">&#xe6d5;</i></a>
+                        <ul class="dropDown-menu menu radius box-shadow">
+                            <li><a id="person_center" href="#">个人中心</a>
+                            <li><a  id='logout' href="#">退出</a></li>
+
+
+                            </li>
+                            <li><a href="#">二级导航</a></li>
+                            <li class="disabled"><a href="javascript:;">二级菜单</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="navbar-userbar hidden-xs">
+
+            </nav>
+        </div>
+    </div>
+</header>

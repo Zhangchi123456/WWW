@@ -1,0 +1,39 @@
+<script>
+
+    $(function () {
+        $("#tab").Huitab({
+            index:0
+        });
+        if("{:session('user_id')}"){
+
+            document.getElementById("logined").style.display='block';
+        }
+        else{
+
+            document.getElementById("login").style.display='block';
+        }
+        $("#logout").click(function () {
+            $.ajax({
+                type:"get",
+                url:"{:url('user/Logout')}",
+                data:{},
+                success:function (data) {
+                    alert(data.message);
+                    window.location.href="{:url('index/index')}";
+                }
+
+            })
+        })
+        $("#login1").click(function () {
+            window.location.href="{:url('user/login')}";
+
+        })
+        $("#sign1").click(function () {
+            window.location.href="{:url('user/sign')}";
+        })
+        $("#person_center").click(function () {
+            window.location.href="{:url('user/user_info')}";
+        })
+    })
+
+</script>

@@ -1,0 +1,578 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="public/meta" /}
+<body>
+<!--_header 作为公共模版分离出去-->
+{include file="public/head" /}
+<div class="mainbody" style="background-color: aliceblue;">
+    <div class="container ui-sortable">
+        <div class="panel panel-default" style="margin-top: 64px;">
+            <div class="panel-header top">
+                <div class="headerlist" style="margin-left: 378px;">
+                    <img style="max-width: 165px;  min-height: 133px;"
+                         src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt="" class="round">
+                    <br>
+                    <p style="margin-left: 40px;  margin-top: -4px;  font-size: 26px;">{:session('user_info.name')}</p>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div id="tab" class="HuiTab">
+                    <div class="tabBar clearfix"><span>我的主页</span><span>我的相册</span><span>个人资料</span></div>
+                    <div class="tabCon">
+                        <div class="col-lg-4">
+                            <table class="tb_counter"
+                                   style="min-height: 60px;margin-top: 28px;background-color: #fffdef" cellpadding="0"
+                                   cellspacing="0">
+                                <tbody>
+                                <tr class="text-c">
+                                    <td class="S_line1">
+                                        <a bpfilter="page_frame" class="t_link S_txt1"
+                                           href="//weibo.com/5727995614/follow?from=page_100505&amp;wvr=6&amp;mod=headfollow#place"><strong
+                                                class="W_f18">118
+                                        </strong><br><span class="S_txt2">关注</span></a></td>
+                                    <td class="S_line1">
+                                        <a bpfilter="page_frame" class="t_link S_txt1"
+                                           href="//weibo.com/5727995614/fans?from=100505&amp;wvr=6&amp;mod=headfans&amp;current=fans#place"><strong
+                                                class="W_f18">
+                                            5</strong><br><span class="S_txt2">粉丝</span></a></td>
+                                    <td class="S_line1">
+                                        <a bpfilter="page_frame" class="t_link S_txt1"
+                                           href="//weibo.com/p/1005055727995614/home?from=page_100505_profile&amp;wvr=6&amp;mod=data#place">
+                                            <strong class="W_f18">24</strong><br><span class="S_txt2">分享</span></a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="panel small" style="min-height: 47px;">
+                                <button class="btn btn-primary-outline radius"
+                                        style="font-size: 14px;min-width: 294px;min-height: 47px;background-color: rgba(240, 248, 255, 0);;">
+                                    编辑个人资料
+                                </button>
+                            </div>
+                            <div class="panel small">
+                                <div class="panel-header small">相册</div>
+                                <div class="panel-body">
+                                    <img style="max-width: 264px; min-height: 199px;"
+                                         src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt=""
+                                         class="thumbnail">
+
+                                </div>
+                                <div class="panel-footer">
+                                    <a style="margin-left: 93px" href="#">查看更多</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="panel share">
+                                <div class="panel-header share">全部动态
+                                </div>
+                                <div class="panel-body">
+                                    <div>
+                                        <form method="post" class="form" id="imgform">
+                                            <div class="row cl">
+                                            <span class="btn-upload form-group">
+									<input class="input-text upload-url" type="text" name="file" id="file" readonly=""
+                                           style="width:200px">
+									<a href="javascript:void();" class="btn btn-primary upload-btn"><i
+                                            class="Hui-iconfont"></i> 浏览文件</a>
+									<input type="file" multiple="" id="file-2" name="file-2" class="input-file valid">
+									</span>
+                                            </div>
+                                            <div class="row cl">
+                                                <input id="upload" class="btn btn-primary size-L hui-bounceinR"
+                                                       type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabCon">
+                        <div class="col-lg-4">
+                            <table class="tb_counter"
+                                   style="min-height: 60px;margin-top: 28px;background-color: #fffdef" cellpadding="0"
+                                   cellspacing="0">
+                                <tbody>
+                                <tr class="text-c">
+                                    <td class="S_line1">
+                                        <a bpfilter="page_frame" class="t_link S_txt1"
+                                           href="//weibo.com/5727995614/follow?from=page_100505&amp;wvr=6&amp;mod=headfollow#place"><strong
+                                                class="W_f18">118
+                                        </strong><br><span class="S_txt2">关注</span></a></td>
+                                    <td class="S_line1">
+                                        <a bpfilter="page_frame" class="t_link S_txt1"
+                                           href="//weibo.com/5727995614/fans?from=100505&amp;wvr=6&amp;mod=headfans&amp;current=fans#place"><strong
+                                                class="W_f18">
+                                            5</strong><br><span class="S_txt2">粉丝</span></a></td>
+                                    <td class="S_line1">
+                                        <a bpfilter="page_frame" class="t_link S_txt1"
+                                           href="//weibo.com/p/1005055727995614/home?from=page_100505_profile&amp;wvr=6&amp;mod=data#place">
+                                            <strong class="W_f18">24</strong><br><span class="S_txt2">分享</span></a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="panel small" style="min-height: 47px;">
+                                <button class="btn btn-primary-outline radius"
+                                        style="font-size: 14px;min-width: 294px;min-height: 47px;background-color: rgba(240, 248, 255, 0);;">
+                                    编辑个人资料
+                                </button>
+                            </div>
+                            <div class="panel small">
+                                <div class="panel-header small">相册</div>
+                                <div class="panel-body">
+                                    <img style="max-width: 264px; min-height: 199px;"
+                                         src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt=""
+                                         class="thumbnail">
+
+                                </div>
+                                <div class="panel-footer">
+                                    <a style="margin-left: 93px" href="#">查看更多<i class="arrow Hui-iconfont">&#xe6d7;</i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="panel share">
+                                <div class="panel-header share">
+                                    <button class="btn btn-primary-outline radius size-L hui-fadeinL"
+                                            onclick="addalbumlist()">全部相册
+                                    </button>
+                                    <button id="uploadalbum" style="margin-left: 284px;"
+                                            class="btn btn-primary-outline radius size-L hui-fadeinL">新建相册
+                                    </button>
+                                    <button id="uploadphoto" style=" margin-left: -3px;"
+                                            class="btn btn-primary-outline radius size-L hui-fadeinL">上传图片
+                                    </button>
+                                </div>
+                                <div class="panel-body">
+                                    <div id="albumcenter" class="hui-flipinX"
+                                         style="display: none ;overflow-y: scroll;max-height: 730px">
+                                        <div class="panel albumsmall">
+                                            <div style="font-family: monospace;" class="panel-header small">我的相册
+                                                <span style="margin-left: 253px;font-size: 2px;">创建时间:</span> <span>2015-10-10 15-10-20</span>
+                                            </div>
+
+                                            <div class="panel-body">
+                                                <img style="max-width: 264px; min-height: 199px;"
+                                                     src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt=""
+                                                     class="thumbnail preview">
+                                                <img style="max-width: 264px; min-height: 199px;"
+                                                     src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt=""
+                                                     class="thumbnail">
+
+                                            </div>
+                                            <div class="panel-footer text-c">
+                                                <a style="margin-left: 93px" href="#">查看所有图片<i
+                                                        class="arrow Hui-iconfont">&#xe6d7;</i></a>
+                                            </div>
+                                        </div>
+                                        <div class="panel albumsmall">
+                                            <div style="font-family: monospace;" class="panel-header small">家人
+                                                <span style="margin-left: 253px;font-size: 2px;">创建时间:</span> <span>2015-10-10 15-10-20</span>
+                                            </div>
+
+                                            <div class="panel-body">
+                                                <img style="max-width: 264px; min-height: 199px;"
+                                                     src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt=""
+                                                     class="thumbnail">
+                                                <img style="max-width: 264px; min-height: 199px;"
+                                                     src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt=""
+                                                     class="thumbnail">
+
+                                            </div>
+                                            <div class="panel-footer text-c">
+                                                <a style="margin-left: 93px" href="#">查看所有图片<i
+                                                        class="arrow Hui-iconfont">&#xe6d7;</i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="addalbum" class="hui-flipinY"
+                                         style="display:none;background-color: #fff;margin-top: 25px; min-width: 614px;margin-left: -15px;">
+                                        <br>
+                                        <br>
+                                        <form action="" method="post" class="form form-horizontal responsive"
+                                              id="albumform" enctype="multipart/form-data">
+                                            <div class="row cl">
+                                                <label class="form-label col-xs-3">相册名：</label>
+                                                <div class="formControls col-xs-8">
+                                                    <input type="text" class="input-text" placeholder=""
+                                                           name="albumname" id="albumname">
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="row cl">
+                                                <label class="form-label col-xs-3">相册封面：</label>
+                                                <span class="btn-upload form-group col-xs-8">
+									<input class="input-text upload-url" type="text" name="photo" id="photo" readonly=""
+                                           style="width:200px">
+									<a href="javascript:void();" class="btn btn-primary upload-btn"><i
+                                            class="Hui-iconfont"></i> 浏览文件</a>
+									<input type="file" multiple="" id="photo-1" name="photo-1" class="input-file valid"
+                                           onchange="changImg(event)">
+									</span>
+                                            </div>
+                                            <br>
+                                            <div class="row cl">
+                                                <div class="form-label col-xs-9 ">
+                                                    <img alt="暂无图片" class="thumbnail text-c"
+                                                         style="width: 250px;height:200px" id="myImg"
+                                                         src="__STATIC__/static/h-ui/images/background/prephoto.svg"</c:if>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row cl">
+                                                <label class="form-label col-xs-3">相册介绍：</label>
+                                                <div class="formControls col-xs-8">
+                                                    <textarea type="text" style="min-height: 95px" class="input-text"
+                                                              autocomplete="off" placeholder="" name="albuminfo"
+                                                              id="albuminfo"></textarea>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="row cl">
+                                                <div class="col-xs-8 col-xs-offset-8">
+                                                    <input id="addbtn"
+                                                           class="btn btn-primary size-L hui-bounceinR text-r"
+                                                           type="button" value="&nbsp;&nbsp;新建&nbsp;&nbsp;">
+                                                </div>
+                                            </div>
+
+                                            <br>
+                                            <br>
+                                        </form>
+
+
+                                    </div>
+                                    <div id="addphoto" class="hui-flipinX"
+                                         style="display:none;background-color: #fff;margin-top: 25px; min-width: 614px;margin-left: -15px;">
+                                        <br>
+                                        <form action="" method="post" class="form form-horizontal responsive"
+                                              id="photoform" enctype="multipart/form-data">
+                                            <div class="row cl">
+                                                <label class="form-label col-xs-3">上传到相册：</label>
+                                                <div class="formControls col-xs-8">
+                                                    <input type="text" class="input-text" placeholder=""
+                                                           name="albumlist" id="albumlist">
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="row cl">
+                                                <label class="form-label col-xs-3">照片：</label>
+                                                <span class="btn-upload form-group col-xs-8">
+									<input class="input-text upload-url" type="text" name="upphoto" id="upphoto"
+                                           readonly="" style="width:200px">
+									<a href="javascript:void();" class="btn btn-primary upload-btn"><i
+                                            class="Hui-iconfont"></i> 浏览文件</a>
+									<input type="file" multiple="" id="upphoto-1" name="upphoto-1"
+                                           class="input-file valid" onchange="changImg1(event)">
+									</span>
+                                            </div>
+                                            <br>
+                                            <div class="row cl">
+                                                <div class="form-label col-xs-9 ">
+                                                    <img alt="暂无图片" class="thumbnail text-c"
+                                                         style="width: 250px;height:200px" id="myImg1"
+                                                         src="__STATIC__/static/h-ui/images/background/prephoto.svg"</c:if>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row cl">
+                                                <label class="form-label col-xs-3">照片介绍：</label>
+                                                <div class="formControls col-xs-8">
+                                                    <textarea type="text" style="min-height: 50px" class="input-text"
+                                                              autocomplete="off" placeholder="" name="photoinfo"
+                                                              id="photoinfo"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row cl">
+                                                <label class="form-label col-xs-3">照片标签：</label>
+                                                <div class="formControls col-xs-8">
+                                                    <div id="Huitags-demo1"></div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="row cl">
+                                                <div class="col-xs-8 col-xs-offset-8">
+                                                    <input id="upbtn"
+                                                           class="btn btn-primary size-L hui-bounceinR text-r"
+                                                           type="button" value="&nbsp;&nbsp;新建&nbsp;&nbsp;">
+                                                </div>
+                                            </div>
+
+                                            <br>
+                                            <br>
+                                        </form>
+
+                                    </div>
+                                    <div id="photocenter" class="hui-flipinX" style="overflow-y: scroll;display:block;background-color: #fff;margin-top: 25px; min-width: 614px;margin-left: -15px;">
+                                        <div class="panel albumsmall">
+                                            <div style="font-family: monospace;" class="panel-header small">图片介绍
+                                                <span style="margin-left: 253px;font-size: 2px;">上传:</span> <span>2015-10-10 15-10-20</span>
+                                            </div>
+                                            <div class="panel-body">
+                                                <img style="max-width: 581px; min-height: 199px;" src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt="" class="thumbnail preview">
+                                            </div>
+                                            <div class="panel-footer text-r">
+
+                                                <a id="sharenum"><i class="Hui-iconfont">&#xe6ab;</i><span>2</span></a>
+                                                <span class="pipe">|</span>
+                                                <a id="clicknum"><i class="Hui-iconfont">&#xe66d;</i><span>2</span></a>
+                                                <span class="pipe">|</span>
+                                                <a id="comment"><i class="Hui-iconfont">&#xe6b3;</i><span>2</span></a>
+                                                <div id="commentlist" class="hui-fadeinT" style="display: none">
+                                                    <ul class="commentList">
+                                                        <li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg"></i></a>
+                                                            <div class="comment-main">
+                                                                <header class="comment-header">
+                                                                    <div class="comment-meta"><a class="comment-author" href="#">辉哥</a> 评论于
+                                                                        <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20">2014-8-31 15:20</time>
+                                                                    </div>
+                                                                </header>
+                                                                <div class="comment-body">
+                                                                    <p>你是猴子派来的救兵吗？</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="comment-main">
+                                                                <header class="comment-header">
+
+                                                                </header>
+                                                                <div class="comment-body">
+                                                                    <input type="text" class="input-text" placeholder=""
+                                                                           name="albumlist" id="">
+                                                                    <button class=" btn btn-primary-outline radius size-S hui-fadeinL">发表评论</button>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="panel albumsmall">
+                                            <div style="font-family: monospace;" class="panel-header small">图片介绍
+                                                <span style="margin-left: 253px;font-size: 2px;">上传:</span> <span>2015-10-10 15-10-20</span>
+                                            </div>
+                                            <div class="panel-body">
+                                                <img style="max-width: 581px; min-height: 199px;" src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt="" class="thumbnail preview">
+                                            </div>
+                                            <div class="panel-footer text-r">
+
+                                                <a><i class="Hui-iconfont">&#xe6ab;</i><span>2</span></a>
+                                                <span class="pipe">|</span>
+                                                <a><i class="Hui-iconfont">&#xe66d;</i><span>2</span></a>
+                                                <span class="pipe">|</span>
+                                                <a id="comment1"><i class="Hui-iconfont">&#xe6b3;</i><span>2</span></a>
+                                                <div id="commentlist1" class="hui-swing" style="display: none">
+                                                    <ul class="commentList">
+                                                        <li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg"></i></a>
+                                                            <div class="comment-main">
+                                                                <header class="comment-header">
+                                                                    <div class="comment-meta"><a class="comment-author" href="#">辉哥</a> 评论于
+                                                                        <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20">2014-8-31 15:20</time>
+                                                                    </div>
+                                                                </header>
+                                                                <div class="comment-body">
+                                                                    <p><a href="#">@某人</a> 你是猴子派来的救兵吗？</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tabCon">内容三</div>
+        </div>
+    </div>
+</div>
+<!--<footer class="footer mt-20">-->
+<!--<div class="container">-->
+<!--<nav class="footer-nav">-->
+<!--<a target="_blank" href="http://www.h-ui.net/aboutHui.shtml">关于H-ui</a>-->
+<!--<span class="pipe">|</span>-->
+<!--<a target="_blank" href="http://www.h-ui.net/copyright.shtml">软件著作权</a>-->
+<!--<span class="pipe">|</span>-->
+<!--<a target="_blank" href="http://www.h-ui.net/juanzeng.shtml">感谢捐赠</a>-->
+<!--</nav>-->
+<!--<p>Copyright &copy;2013-2017 H-ui.net All Rights Reserved. <br>-->
+<!--<a rel="nofollow" target="_blank" href="http://www.miitbeian.gov.cn/">京ICP备15015336号-1</a>-->
+<!--<br>-->
+<!--未经允许，禁止转载、抄袭、镜像<br>-->
+<!--用心做站，做不一样的站</p>-->
+<!--</div>-->
+<!--</footer>-->
+<!--普通弹出层-->
+<script type="text/javascript" src="__STATIC__/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="__STATIC__/static/h-ui/js/H-ui.js"></script>
+<script type="text/javascript" src="__STATIC__/static/h-ui/js/head.js"></script>
+<script type="text/javascript" src="__STATIC__/static/h-ui.admin/js/H-ui.admin.page.js"></script>
+<!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript">
+
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+{include file="public/headjs" /}
+
+<script>
+    $("#Huitags-demo1").Huitags(
+        {
+
+            maxlength: 20,
+            number: 5,
+            tagsDefault: ["风景", "小清新", "旅行", "人像", "婚纱", "自拍", "人文"],
+        }
+    );
+
+    function changImg(e) {
+        for (var i = 0; i < e.target.files.length; i++) {
+            var file = e.target.files.item(i);
+            if (!(/^image\/.*$/i.test(file.type))) {
+                continue; //不是图片 就跳出这一次循环
+            }
+            //实例化FileReader API
+            var freader = new FileReader();
+            freader.readAsDataURL(file);
+            freader.onload = function (e) {
+                $("#myImg").attr("src", e.target.result);
+            };
+        }
+    }
+
+    function changImg1(e) {
+        for (var i = 0; i < e.target.files.length; i++) {
+            var file = e.target.files.item(i);
+            if (!(/^image\/.*$/i.test(file.type))) {
+                continue; //不是图片 就跳出这一次循环
+            }
+            //实例化FileReader API
+            var freader = new FileReader();
+            freader.readAsDataURL(file);
+            freader.onload = function (e) {
+                $("#myImg1").attr("src", e.target.result);
+            };
+        }
+    }
+
+    $("#upload").click(function () {
+        if ("{:session('user_id')}") {
+            var fd = new FormData();
+            fd.append('upload_file', $("#file-2")[0].files[0]);
+            fd.append('user_name', "{:session('user_id')}");
+            alert($("#file-2")[0].files[0]);
+            $.ajax({
+                type: 'POST',
+                url: "{:url('photo/uploadimg')}",
+                processData: false,
+                contentType: false,
+                data: fd,
+                success: function (data) {
+                    alert(data.img);
+                    alert(data.img1);
+                }
+            })
+        }
+        else {
+            $.Huimodalalert("请先登录", 1000);
+        }
+
+    })
+    $("#addbtn").click(function () {
+        var albumdata = new FormData();
+        albumdata.append("albumname", $("#albumname").val());
+        albumdata.append("albuminfo", $("#albuminfo").val());
+        albumdata.append("photo", $("#photo").val());
+        albumdata.append("photo-1", $("#photo-1")[0].files[0])
+        alert(albumdata.get("albumname"));
+        $.ajax({
+            type: "POST",
+            url: "{:url('album/addAlbum')}",
+            processData: false,
+            contentType: false,
+            data: albumdata,
+            success: function (data) {
+                if (data.status == "1") {
+                    $.Huimodalalert(data.message, "2000");
+                    document.getElementById("albumcenter").style.display = "block";
+                    document.getElementById("addalbum").style.display = "none";
+
+                }
+                else
+                    $.Huimodalalert(data.message, "2000");
+            }
+        })
+    })
+
+
+</script>
+<script>
+    $("#uploadalbum").click(function () {
+        document.getElementById("albumcenter").style.display = "none";
+        document.getElementById("addalbum").style.display = "block";
+        document.getElementById("addphoto").style.display = "none";
+
+    })
+    $("#uploadphoto").click(function () {
+        document.getElementById("albumcenter").style.display = "none";
+        document.getElementById("addalbum").style.display = "none";
+        document.getElementById("addphoto").style.display = "block";
+    })
+
+    $("#comment").click(function () {
+        document.getElementById("commentlist").style.display = "block";
+
+    })
+    // addalbumlist();
+    function addalbumlist() {
+        $.ajax({
+            type: "GET",
+            url: "{:url('album/getAlbumlist')}",
+            data: {},
+            success: function (data) {
+                setAlbumele(data.data);
+            }
+        });
+    };
+
+    function setAlbumele(data) {
+        document.getElementById("albumcenter").style.display = "block";
+        document.getElementById("addalbum").style.display = "none";
+        $("#albumcenter").empty();
+        for (var i = 0; i < data.length; i++) {
+            $("#albumcenter").append("<div class=\"panel albumsmall\">\n" +
+                "                                            <div style=\"font-family: monospace;\" class=\"panel-header small\">" + data[i].album_name + "\n" +
+                "                                              <span style=\"margin-left: 253px;font-size: 2px;\">创建时间:</span> <span>" + data[i].creat_time + "</span>\n" +
+                "                                            </div>\n" +
+                "\n" +
+                "                                            <div class=\"panel-body\">\n" +
+                "                                                <img style=\"max-width: 264px; min-height: 199px;\" src=\"__STATIC__/image/" + "{:session('user_info.name')}/" + data[i].album_photo + "\" alt=\"\" class=\"thumbnail\">\n" +
+                "                                                <img style=\"max-width: 264px; min-height: 199px;\" src=\"__STATIC__/image/admin/adminzxc.jpg\" alt=\"\" class=\"thumbnail\">\n" +
+                "\n" +
+                "                                            </div>\n" +
+                "                                            <div class=\"panel-footer text-c\">\n" +
+                "                                                <a style=\"margin-left: 93px\" onclick='addphotolist(this)'name='"+data[i].album_name +"'>查看所有图片<i class=\"arrow Hui-iconfont\">&#xe6d7;</i></a>\n" +
+                "                                            </div>\n" +
+                "                                        </div>"
+            )
+        }
+    }
+
+</script>
+<!--/此乃百度统计代码，请自行删除-->
+</body>
+</html>

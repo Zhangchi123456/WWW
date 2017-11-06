@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__STATIC__/lib/html5shiv.js"></script>
+    <script type="text/javascript" src="__STATIC__/lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="__STATIC__/static/h-ui/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="__STATIC__/lib/Hui-iconfont/1.0.8/iconfont.min.css" />
+    <link rel="stylesheet" type="text/css" href="__STATIC__/static/h-ui/css/login.css" />
+    <!--[if lt IE 9]>
+    <link href="__STATIC__/static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="__STATIC__/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <style type="text/css">
+        .ui-sortable .panel-header{ cursor:move}
+    </style>
+    <title>Hi，H-ui v3.1</title>
+    <meta name="keywords" content="关键词,5个左右,单个8汉字以内">
+    <meta name="description" content="网站描述，字数尽量空制在80个汉字，160个字符以内！">
+</head>
+<body class="backimg">
+<div class="header"></div>
+</div><div class="panel-body">
+    <form action="" method="post" class="form form-horizontal responsive" id="demoform">
+        <div class="row cl" style="display: block">a</div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-3">用户名：</label>
+            <div class="formControls col-xs-8">
+                <input type="text" class="input-text" placeholder="4~16个字符，字母/中文/数字/下划线" name="name" id="name" >
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3">邮箱：</label>
+            <div class="formControls col-xs-8">
+                <input type="text" class="input-text" placeholder="@" name="email" id="email" autocomplete="off">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3">手机：</label>
+            <div class="formControls col-xs-8">
+                <input type="text" class="input-text" autocomplete="off" placeholder="" name="telephone" id="telephone">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3">个人简介：</label>
+            <div class="formControls col-xs-8">
+                <input type="text" class="input-text" autocomplete="off" placeholder="" name="introduction" id="introduction">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3">个人头像：</label>
+            <span class="btn-upload form-group col-xs-8">
+									<input class="input-text upload-url" type="text" name="photo" id="profile" readonly=""
+                                           style="width:200px">
+									<a href="javascript:void();" class="btn btn-primary upload-btn"><i
+                                            class="Hui-iconfont"></i> 浏览文件</a>
+									<input type="file" multiple="" id="profile-1" name="profile-1" class="input-file valid"
+                                           onchange="changImg2(event)">
+									</span>
+        </div>
+        <div class="row cl">
+            <div class="form-label col-xs-9 ">
+                <img alt="暂无图片" class="round text-c"
+                     style="width: 100px;height:100px" id="myImg2"
+                     src="__STATIC__/static/h-ui/images/background/prephoto.svg"</c:if>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3">密码：</label>
+            <div class="formControls col-xs-8">
+                <input type="password" class="input-text" autocomplete="off" placeholder="" name="password" id="password">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3">密码验证：</label>
+            <div class="formControls col-xs-8">
+                <input type="password" class="input-text" autocomplete="off" placeholder="" name="password2" id="password2">
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-xs-offset-3">
+                <input id="login" class="btn btn-primary size-L hui-bounceinR" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+        <div class="row cl" style="display: block">a</div>
+    </form>
+</div>
+
+<script type="text/javascript" src="__STATIC__/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/static/h-ui/js/H-ui.js"></script>
+<script>
+    function changImg2(e) {
+        for (var i = 0; i < e.target.files.length; i++) {
+            var file = e.target.files.item(i);
+            if (!(/^image\/.*$/i.test(file.type))) {
+                continue; //不是图片 就跳出这一次循环
+            }
+            //实例化FileReader API
+            var freader = new FileReader();
+            freader.readAsDataURL(file);
+            freader.onload = function (e) {
+                $("#myImg2").attr("src", e.target.result);
+            };
+        }
+    }
+    $(function () {
+        $("#name").blur(function () {
+            $.ajax({
+                type:"GET",
+                url:"{:url('checkName')}",
+                data:{"name":$(this).val()},
+                success:function (data) {
+                    if(data.status==0){
+                        $.Huimodalalert(data.message, 500);
+                    }
+                }
+            })
+        })
+
+        $("#login").on('click', function (event) {
+            alert(1);
+            var formdata = new FormData();
+            formdata.append("name",$("#name").val());
+            formdata.append("email",$("#email").val());
+            formdata.append("telephone",$("#telephone").val());
+            formdata.append("password",$("#password").val());
+            formdata.append("password2",$("#password2").val());
+            formdata.append("introduction",$("#introduction").val());
+            formdata.append("uploadfile",$("#profile-1")[0].files[0])
+            $.ajax({
+                type:"post",
+                url:"{:url('addUser')}",
+                data:formdata,
+                processData: false,
+                contentType: false,
+                success:function (data) {
+                    if(data.status=="1") {
+                        alert(data.message);
+                        window.location.href="{:url('index/index')}";
+
+                    }
+                    else
+                       alert(data.message);
+                }
+
+            })
+
+        })
+    })
+</script>
+<script>
+    function refresh() {
+        var ts = Date.parse(new Date())/1000;
+        $("#verify_img").attr("src","/captcha?id="+ts);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<script>
+    $("#editor").click(function () {
+        $(".tabBar").find("span").each(function () {
+
+            if($(this).text()=="个人资料") {
+                $("#tab").Huitab({
+                    index: 2
+                });
+            }
+        })
+
+    })
+
+</script>
