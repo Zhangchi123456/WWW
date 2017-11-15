@@ -1,0 +1,415 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="public/meta" /}
+<body>
+<!--_header 作为公共模版分离出去-->
+{include file="public/head" /}
+<div class="mainbody" style="background-color:  #98c2ed;;">
+    <div class="container ui-sortable">
+        <div class="panel panel-default" style="margin-top: 64px;">
+            <div class="panel-header top">
+                <div class="headerlist" style="margin-left: 378px;">
+                    <img style="width: 129px;height: 121px;"
+                         src="__STATIC__/image/{:session('other_info.name')}/{:session('other_info.photo')}" alt="" class="round">
+
+                    <br>
+                    <p style="margin-left: 25px;  margin-top: -4px;  font-size: 26px;">{:session('other_info.name')}</p>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div id="tab" class="HuiTab">
+                    <div class="tabBar clearfix"><span style="width: 196px;">他的主页</span><span style="width: 258px;">他的相册</span></div>
+                    <div class="tabCon">
+                        <div class="col-lg-12">
+                            <div class="panel share" style="background-color: rgba(240, 248, 255, 0.36);">
+                                <span class="select-box" style="height: 49px;margin-top: 5px; width: 139px; font-size: 22px;">
+                                     <select class="select" size="1" name="demo1" style="font-size: 17px; font-family: -webkit-body;">
+                                         <option value="1" selected>全部动态</option>
+                                     </select>
+                                </span>
+                                <div id="usercenter" class="hui-fadeinR" style="display:block;overflow-y: auto;height: 743px;background-color: #fff;margin-top: 20px; min-width: 614px">
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="tabCon">
+                        <div class="col-lg-12">
+                            <div class="panel share">
+                                <div class="panel-header share">
+                                    <button class="btn btn-primary-outline radius size-L hui-fadeinL"
+                                            onclick="addalbumlist()">全部相册
+                                    </button>
+
+                                </div>
+                                <div class="panel-body">
+                                    <div id="albumcenter" class="hui-fadeinR"
+                                         style="overflow-y: auto;height: 743px;display:block;background-color: #fff;margin-top: 20px; min-width: 614px;margin-left: -15px;">
+                                        <div class=" panel photosmall box-shadow">
+                                            <div style="font-family: monospace;" class="panel-header small">我的相册
+                                                <span style="margin-left: 253px;font-size: 2px;">创建时间:</span> <span>2015-10-10 15-10-20</span>
+                                            </div>
+
+                                            <div class="panel-body">
+                                                <img style="max-width: 264px; min-height: 199px;"
+                                                     src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt=""
+                                                     class="thumbnail preview">
+                                                <img style="max-width: 264px; min-height: 199px;"
+                                                     src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt=""
+                                                     class="thumbnail">
+
+                                            </div>
+                                            <div class="panel-footer text-c">
+                                                <a style="margin-left: 93px" href="#">查看所有图片<i
+                                                        class="arrow Hui-iconfont">&#xe6d7;</i></a>
+                                            </div>
+                                        </div>
+                                        <div class="panel photosmall box-shadow">
+                                            <div style="font-family: monospace;" class="panel-header small">家人
+                                                <span style="margin-left: 253px;font-size: 2px;">创建时间:</span> <span>2015-10-10 15-10-20</span>
+                                            </div>
+
+                                            <div class="panel-body">
+                                                <img style="max-width: 264px; min-height: 199px;"
+                                                     src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt=""
+                                                     class="thumbnail">
+                                                <img style="max-width: 264px; min-height: 199px;"
+                                                     src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt=""
+                                                     class="thumbnail">
+
+                                            </div>
+                                            <div class="panel-footer text-c">
+                                                <a style="margin-left: 93px" href="#">查看所有图片<i
+                                                        class="arrow Hui-iconfont">&#xe6d7;</i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="photocenter" class="hui-fadeinR" style="overflow-y: auto;height: 743px;display:none;background-color: #fff;margin-top: 20px; min-width: 614px;margin-left: -15px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+<!--<footer class="footer mt-20">-->
+<!--<div class="container">-->
+<!--<nav class="footer-nav">-->
+<!--<a target="_blank" href="http://www.h-ui.net/aboutHui.shtml">关于H-ui</a>-->
+<!--<span class="pipe">|</span>-->
+<!--<a target="_blank" href="http://www.h-ui.net/copyright.shtml">软件著作权</a>-->
+<!--<span class="pipe">|</span>-->
+<!--<a target="_blank" href="http://www.h-ui.net/juanzeng.shtml">感谢捐赠</a>-->
+<!--</nav>-->
+<!--<p>Copyright &copy;2013-2017 H-ui.net All Rights Reserved. <br>-->
+<!--<a rel="nofollow" target="_blank" href="http://www.miitbeian.gov.cn/">京ICP备15015336号-1</a>-->
+<!--<br>-->
+<!--未经允许，禁止转载、抄袭、镜像<br>-->
+<!--用心做站，做不一样的站</p>-->
+<!--</div>-->
+<!--</footer>-->
+<!--普通弹出层-->
+<script type="text/javascript" src="__STATIC__/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="__STATIC__/static/h-ui/js/H-ui.js"></script>
+<script type="text/javascript" src="__STATIC__/static/h-ui/js/head.js"></script>
+<script type="text/javascript" src="__STATIC__/static/h-ui.admin/js/H-ui.admin.page.js"></script>
+<!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<!--/请在上方写此页面业务相关的脚本-->
+{include file="public/headjs" /}
+<!--相册初始化-->
+<script>
+    addalbumlist();
+    function addalbumlist() {
+        document.getElementById("albumcenter").style.display = "block";
+        document.getElementById("photocenter").style.display = "none";
+        var id ="{:session('other_id')}"
+        $.ajax({
+            type: "GET",
+            url: "{:url('album/getAlbumlist')}",
+            data: {"user_id":id},
+            success: function (data) {
+                setAlbumele(data.data);
+            }
+        });
+    }
+
+    function setAlbumele(data) {
+        document.getElementById("albumcenter").style.display = "block";
+        $("#albumcenter").empty();
+        for (var i = data.length-1; i >=0; i--) {
+            $("#albumcenter").append("<div class=\"panel photosmall box-shadow\">\n" +
+                "                                            <div style=\"font-family: monospace;\" class=\"panel-header small\">" + data[i].album_name + "\n" +
+                "                                              <span style=\"margin-left: 253px;font-size: 2px;\">创建时间:</span> <span>" + data[i].creat_time.replace('.',':').replace('.',':') + "</span>\n" +
+                "                                            </div>\n" +
+                "\n" +
+                "                                            <div class=\"panel-body\">\n" +
+                "                                                <img style=\"max-width: 264px; min-height: 199px;\" src=\"__STATIC__/image/" + "{:session('other_info.name')}/" + data[i].album_photo + "\" alt=\"\" class=\"thumbnail\">\n" +
+                "                                                <img style=\"max-width: 264px; min-height: 199px;\" src=\"__STATIC__/image/admin/adminzxc.jpg\" alt=\"\" class=\"thumbnail\">\n" +
+                "\n" +
+                "                                            </div>\n" +
+                "                                            <div class=\"panel-footer text-c\">\n" +
+                "                                                <a style=\"margin-left: 94px\" onclick='addphotolist(this)'name='"+data[i].album_name +"'>查看所有图片<i class=\"arrow Hui-iconfont\">&#xe6d7;</i></a>\n" +
+                "                                            </div>\n" +
+                "                                        </div>"
+            )
+        }
+    }
+</script>
+<!--照片的js-->
+<script>
+    addallphoto();
+    function addallphoto() {
+        var id = "{:session('other_id')}";
+        $.ajax({
+            type: "GET",
+            url: "{:url('photo/getAlllist')}",
+            data: {"user_id":id},
+            success: function (data) {
+                setPhotolist(data.data,"usercenter");
+            }
+        });
+    }
+    function addphotolist(type) {
+        var obj=$(type);
+        var  albumname =obj.attr("name");
+        setAlbumphoto(albumname);
+
+    }
+    function setAlbumphoto(albumname) {
+        var id = "{:session('other_id')}";
+        $.ajax({
+            type:'POST',
+            url: "{:url('photo/getPlist')}",
+            data:{"albumname":albumname,"user_id":id},
+            success:function (data) {
+                setPhotolist(data.data,"photocenter");
+                document.getElementById("albumcenter").style.display = "none";
+                document.getElementById("photocenter").style.display="block";
+            }
+        })
+    }
+    function setPhotolist(data,type){
+        var obj;
+        if(type=="photocenter")
+            obj = $("#photocenter");
+        else
+            obj =$("#usercenter");
+        obj.empty();
+
+        for (var i = data.length-1; i>=0; i--) {
+            obj.append("  <div class=\"panel photosmall box-shadow\">\n" +
+                "                                            <div style=\"font-family: monospace;\" class=\"panel-header small\">\n" +
+                "                                                <img style=\"max-width: 40px;  min-height: 40px;\"\n" +
+                "                                                     src=\"__STATIC__/image/"+data[i].user_info.name+"/"+data[i].user_info.photo+"\" alt=\"\" class=\"round\">\n" +
+                "                                                <a onclick=\"tootherinfo("+data[i].user_info.user_id+",this)\"><u style='font-size: 20px;'>"+data[i].user_info.name+"</u></a>\n" +
+                "                                                <span class=\"f-r\">"+data[i].creat_time.replace('.',':').replace('.',':')+"</span><br>\n" +
+                "                                            <span class=\"f-r\">来自：<a onclick=\"toAlbum(this)\">"+data[i].albumname+"</a></span>\n" +
+                "                                                <br>\n" +
+                "                                                <p style=\"margin-bottom: 0px; margin-top: 6px;\">"+data[i].photo_info+"</p>\n" +
+                "                                            </div>\n" +
+                "                                            <div class=\"line\"></div>\n" +
+                "                                            <div class=\"panel-body\">\n" +
+                "                                                <img style=\"max-width: 516px;max-height: 199px;\"  src=\"__STATIC__/image/{:session('other_info.name')}/"+data[i].photo_name+"\" alt=\"\" class=\"thumbnail preview\">\n" +
+                "                                            </div>\n" +
+                "                                            <div class=\"panel-footer \">\n" +
+                "                                                <div class=\"text-l\">\n" +
+                "                                                    <span>标签:</span>\n" +
+                "                                                   \n" +
+                "                                                </div>\n" +
+                "                                                        <div class=\"text-r\">\n" +
+                "                                                <a onclick=\"addsharenum("+data[i].photo_id+",this)\" name='share'><i class=\"Hui-iconfont\">&#xe6ab;</i><span>"+data[i].sharenum+"</span></a>\n" +
+                "                                                    <span class=\"pipe\">|</span>\n" +
+                "                                                <a onclick=\"addclicknum("+data[i].photo_id+",this)\" name='click'><i class=\"Hui-iconfont\">&#xe66d;</i><span>"+data[i].clicknum+"</span></a>\n" +
+                "                                                    <span class=\"pipe\">|</span>\n" +
+                "                                              <a onclick=\"comlist("+data[i].photo_id+",this)\"><i class=\"Hui-iconfont\">&#xe6b3;</i><span>"+data[i].commentnum+"</span></a>\n" +
+                "                                                        </div>\n" +
+                "                                                    <div  class=\"hui-fadeinT\" >\n" +
+                "                                                        <ul class=\"commentList\" style=\"display: none;overflow-y: auto;max-height: 262px;\">\n" +
+                "                                                            <li class=\"item cl\"> <a href=\"#\"><i class=\"avatar size-L radius\"><img alt=\"\" src=\"http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg\"></i></a>\n" +
+                "                                                                <div class=\"comment-main\">\n" +
+                "                                                                    <header class=\"comment-header\">\n" +
+                "                                                                        <div class=\"comment-meta\"><a class=\"comment-author\" href=\"#\">辉哥</a> 评论于\n" +
+                "                                                                            <time title=\"2014年8月31日 下午3:20\" datetime=\"2014-08-31T03:54:20\">2014-8-31 15:20</time>\n" +
+                "                                                                        </div>\n" +
+                "                                                                    </header>\n" +
+                "                                                                    <div class=\"comment-body\">\n" +
+                "                                                                        <p>你是猴子派来的救兵吗？</p>\n" +
+                "                                                                    </div>\n" +
+                "                                                                </div>\n" +
+                "                                                            </li>\n" +
+                "                                                            <li>\n" +
+                "                                                                <div class=\"comment-main\">\n" +
+                "                                                                    <header class=\"comment-header\">\n" +
+                "\n" +
+                "                                                                    </header>\n" +
+                "                                                                    <div class=\"comment-body text-r\">\n" +
+                "                                                                <input type=\"text\" class=\"input-text\" placeholder=\"\"\n" +
+                "                                                                       name=\"albumlist\" id=\"\">\n" +
+                "                                                                    <button class=\" btn btn-primary-outline radius size-S hui-fadeinL\">发表评论</button>\n" +
+                "                                                                    </div>\n" +
+                "                                                                </div>\n" +
+                "                                                            </li>\n" +
+                "                                                        </ul>\n" +
+                "                                                    </div>\n" +
+                "                                            </div>\n" +
+                "\n" +
+                "                                        </div>")
+
+            for(var j =0;j<data[i].taglist.length;j++) {
+                obj.find(".text-l:last").append("<span type='button' style=\"cursor:pointer ; margin-left: 10px;color: #290a0a;\n" +
+                    "    background-color: #f0f8ff;\n" +
+                    "    border-color: #98c2ed;\" class='btn btn-primary radius  size-S'>"+data[i].taglist[j].tag+"</span>")
+            }
+            if(data[i].isshare==1){
+                obj.find("a[name='share']").css("color", "#412ccc");
+            }
+            if(data[i].isclick==1){
+                obj.find("a[name='click']").css("color", "#412ccc");
+            }
+        }
+
+    }
+    function tootherinfo(name,type) {
+        alert(name);
+        $.ajax({
+            type:"POST",
+            url:"{:url('user/setOther')}",
+            data:{"username":name},
+            success:function (data) {
+                alert(data);
+                window.location.href= "{:url('user/Other_info')}";
+            }
+        })
+    }
+    function  toAlbum(type) {
+        $("#tab").Huitab({
+            index: 1
+        });
+        setAlbumphoto($(type).html());
+    }
+    function  addsharenum(id,type) {
+        alert(1);
+        if ($(type).css("color") != "rgb(65, 44, 204)") {
+            $(type).css("color", "#412ccc");
+            var sharenum = $(type).find("span").text();
+            $(type).find("span").text(parseInt(sharenum)+1);
+            $.ajax({
+                type:"POST",
+                url:"{:url('photo/addSharenum')}",
+                data:{"photo_id":id},
+                success:function (data) {
+
+                }
+            })
+        }
+    }
+    function  addclicknum(id,type) {
+
+        if ($(type).css("color") != "rgb(65, 44, 204)") {
+            $(type).css("color", "#412ccc");
+            var clicknum = $(type).find("span").text();
+            $(type).find("span").text(parseInt(clicknum)+1);
+            $.ajax({
+                type:"POST",
+                url:"{:url('photo/addClicknum')}",
+                data:{"photo_id":id},
+                success:function (data) {
+
+                }
+            })
+        }
+    }
+    function comlist(id,type) {
+        var obj =  $(type).parent().parent().find("ul");
+        if($(type).parent().parent().find("ul").css('display')=="none") {
+            $(type).parent().parent().find("ul").css("display", "block");
+
+            $.ajax({
+                type:"GET",
+                url:"{:url('comment/getComment')}",
+                data:{"photo_id":id},
+                success:function (data) {
+                    addCommentlist(data.data,obj,id);
+                }
+            })
+
+        }
+        else
+            $(type).parent().parent().find("ul").css("display","none");
+
+    }
+    function  addCommentlist(data,obj,id) {
+        obj.empty();
+        obj.append(" <li class=\"item cl\">\n" +
+            "                                                            <div class=\"comment-main\">\n" +
+            "                                                                <header class=\"comment-header\">\n" +
+            "\n" +
+            "                                                                </header>\n" +
+            "                                                                <div class=\"comment-body text-r\">\n" +
+            "                                                                    <input type=\"text\" class=\"input-text\" placeholder=\"\"\n" +
+            "                                                                           name=\"commenttext\" id=\"\">\n" +
+            "                                                                    <button onclick='commentbtn(this,"+id+")' class=\" btn btn-primary-outline radius size-S hui-fadeinL\">发表评论</button>\n" +
+            "                                                                </div>\n" +
+            "                                                            </div>\n" +
+            "                                                        </li>")
+        for(var i =0;i<data.length;i++){
+            obj.append("  <li class=\"item cl\"> <a href=\"#\"><i class=\"avatar size-L radius\"><img alt=\"\" src=\"http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg\"></i></a>\n" +
+                "                                                            <div class=\"comment-main\">\n" +
+                "                                                                <header class=\"comment-header\">\n" +
+                "                                                                    <div class=\"comment-meta\"><a class=\"comment-author\" href=\"#\">"+data[i].name+"</a> 评论于\n" +
+                "                                                                        <time title=\"2014年8月31日 下午3:20\" datetime=\"2014-08-31T03:54:20\">"+data[i].creat_time+"</time>\n" +
+                "                                                                    </div>\n" +
+                "                                                                </header>\n" +
+                "                                                                <div class=\"comment-body\">\n" +
+                "                                                                    <p>"+data[i].comment+"</p>\n" +
+                "                                                                </div>\n" +
+                "                                                            </div>\n" +
+                "                                                        </li>")
+        }
+
+    }
+    function  commentbtn(type ,id) {
+        var comment = $(type).parent().find("input").val();
+        var obj = $(type).parent().parent().parent();
+        if (comment == "") {
+            $.Huimodalalert("未填写内容",1000);
+
+        }
+        else {
+            $.ajax({
+                type:'POST',
+                url: "{:url('comment/addComment')}",
+                data:{"comment":comment,"photo_id":id},
+                success:function (data) {
+                    $.Huimodalalert(data.message,1000);
+                    obj.after("  <li class=\"item cl\"> <a href=\"#\"><i class=\"avatar size-L radius\"><img alt=\"\" src=\"http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg\"></i></a>\n" +
+                        "                                                            <div class=\"comment-main\">\n" +
+                        "                                                                <header class=\"comment-header\">\n" +
+                        "                                                                    <div class=\"comment-meta\"><a class=\"comment-author\" href=\"#\">"+data.data.name+"</a> 评论于\n" +
+                        "                                                                        <time title=\"2014年8月31日 下午3:20\" datetime=\"2014-08-31T03:54:20\">"+data.data.creat_time+"</time>\n" +
+                        "                                                                    </div>\n" +
+                        "                                                                </header>\n" +
+                        "                                                                <div class=\"comment-body\">\n" +
+                        "                                                                    <p>"+data.data.comment+"</p>\n" +
+                        "                                                                </div>\n" +
+                        "                                                            </div>\n" +
+                        "                                                        </li>")
+                    $(type).parent().find("input").val("");
+                }
+            })
+        }
+    }
+</script>
+</body>
+</html>

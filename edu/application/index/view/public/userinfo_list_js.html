@@ -1,5 +1,5 @@
 <script>
-    $("#editor").click(function () {
+    $("[name='editor']").click(function () {
         $(".tabBar").find("span").each(function () {
 
             if($(this).text()=="个人资料") {
@@ -10,5 +10,25 @@
         })
 
     })
+    function getAttentionListbtn(type){
+        $(type).find('strong').text();
+        alert( $(type).find('span').text());
+        var temp = $(type).find("span").text();
+        $("#tab").Huitab({
+            index: 0
+        });
+
+        if(temp=='关注'){
+                $(".select").val(2);
+
+        }
+        else if(temp=='粉丝'){
+            $(".select").val(3);
+        }
+        else {
+            $(".select").val(1);
+        }
+        $(".select").change();
+    }
 
 </script>

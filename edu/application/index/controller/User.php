@@ -8,11 +8,16 @@ use think\Session;
 class User extends Base
 
 {
+
     public function Login()
     {
         return $this -> view -> fetch();
     }
     public function User_info()
+    {
+        return $this -> view -> fetch();
+    }
+    public function Other_info()
     {
         return $this -> view -> fetch();
     }
@@ -27,6 +32,13 @@ class User extends Base
     public function Sign()
     {
         return $this -> view -> fetch();
+    }
+    public function setOther(Request $request){
+        $otherid = $request->param("username");
+        $user = UserModel::get(["user_id"=>$otherid]);
+        Session::set("other_id",$user->user_id);
+        Session::set("other_info",$user->getData());
+        return["message"=>$user->user_id];
     }
     public function checkName(Request $request){
         $name = trim($request->param('name'));

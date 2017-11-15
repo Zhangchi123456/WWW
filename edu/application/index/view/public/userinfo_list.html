@@ -5,24 +5,24 @@
         <tbody>
         <tr class="text-c">
             <td class="S_line1">
-                <a bpfilter="page_frame" class="t_link S_txt1"
-                   href="//weibo.com/5727995614/follow?from=page_100505&amp;wvr=6&amp;mod=headfollow#place"><strong
-                id="attentionnum1"        class="W_f18">{:session('user_info.attentionum')}
+                <a onclick="getAttentionListbtn(this)" bpfilter="page_frame" class="t_link S_txt1"
+                   href="#"><strong
+                     class="W_f18">{:session('user_info.attentionum')}
                 </strong><br><span class="S_txt2">关注</span></a></td>
             <td class="S_line1">
-                <a bpfilter="page_frame" class="t_link S_txt1"
-                   href="//weibo.com/5727995614/fans?from=100505&amp;wvr=6&amp;mod=headfans&amp;current=fans#place"><strong
-                 id="fannum1"       class="W_f18">
+                <a onclick="getAttentionListbtn(this)" bpfilter="page_frame" class="t_link S_txt1"
+                   href="#"><strong
+                  class="W_f18">
                     {:session('user_info.fansnum')}</strong><br><span class="S_txt2">粉丝</span></a></td>
             <td class="S_line1">
-                <a bpfilter="page_frame" class="t_link S_txt1"
-                   href="//weibo.com/p/1005055727995614/home?from=page_100505_profile&amp;wvr=6&amp;mod=data#place">
-                    <strong id="sharenum1" class="W_f18">{:session('user_info.sharenum')}</strong><br><span class="S_txt2">分享</span></a></td>
+                <a onclick="getAttentionListbtn(this)" bpfilter="page_frame" class="t_link S_txt1"
+                   href="#">
+                    <strong   class="W_f18">{:session('user_info.sharenum')}</strong><br><span class="S_txt2">分享</span></a></td>
         </tr>
         </tbody>
     </table>
     <div class="panel small" style="min-height: 47px;">
-        <button id="editor" class="btn btn-primary-outline radius"
+        <button name="editor" class="btn btn-primary-outline radius"
                 style="font-size: 14px;min-width: 294px;min-height: 47px;background-color: rgba(240, 248, 255, 0);;">
             编辑个人资料
         </button>

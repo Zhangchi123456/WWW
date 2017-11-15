@@ -1,103 +1,158 @@
 ﻿<!--_meta 作为公共模版分离出去-->
 {include file="public/meta" /}
+<link rel="stylesheet" type="text/css" href="__STATIC__/static/h-ui/css/index.css" />
 <body>
 <!--_header 作为公共模版分离出去-->
 {include file="public/head" /}
-<div class = "mainbody" style="background-color: aliceblue;">
-<div class="container ui-sortable">
-    <div class="panel panel-default" style="margin-top: 64px;">
-        <div class="panel-header top">
-            <div class="headerlist" style="margin-left: 378px;">
-                <img style="max-width: 165px;  min-height: 133px;" src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt="" class="round">
-                <br>
-                <p style="margin-left: 40px;  margin-top: -4px;  font-size: 26px;">{:session('user_id')}</p>
-            </div>
-        </div>
-        <div class="panel-body">
-            <div id="tab" class="HuiTab" >
-                <div class="tabBar clearfix"><span>我的主页</span><span>我的相册</span><span>个人资料</span></div>
-                <div class="tabCon"  >
-                    <div class="col-lg-4">
-                        <table class="tb_counter" style="min-height: 60px;margin-top: 28px;background-color: #fffdef" cellpadding="0" cellspacing="0">
-                            <tbody>
-                            <tr class="text-c">
-                                <td class="S_line1">
-                                    <a bpfilter="page_frame" class="t_link S_txt1" href="//weibo.com/5727995614/follow?from=page_100505&amp;wvr=6&amp;mod=headfollow#place"><strong class="W_f18">118
-                                    </strong><br><span class="S_txt2">关注</span></a></td>
-                                <td class="S_line1">
-                                    <a bpfilter="page_frame" class="t_link S_txt1" href="//weibo.com/5727995614/fans?from=100505&amp;wvr=6&amp;mod=headfans&amp;current=fans#place"><strong class="W_f18">
-                                        5</strong><br><span class="S_txt2">粉丝</span></a></td>
-                                <td class="S_line1">
-                                    <a bpfilter="page_frame" class="t_link S_txt1" href="//weibo.com/p/1005055727995614/home?from=page_100505_profile&amp;wvr=6&amp;mod=data#place">
-                                        <strong class="W_f18">24</strong><br><span class="S_txt2">分享</span></a></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div class="panel small" style="min-height: 47px;"><button class="btn btn-primary-outline radius" style="font-size: 14px;min-width: 294px;min-height: 47px;background-color: rgba(240, 248, 255, 0);;">编辑个人资料</button></div>
-                        <div class="panel small">
-                            <div class="panel-header small">相册</div>
-                            <div class="panel-body">
-                                <img style="max-width: 264px; min-height: 199px;" src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt="" class="thumbnail">
+<div class = "mainbody" >
 
-                            </div>
-                            <div class="panel-footer">
-                                <a style="margin-left: 93px" href="#">查看更多</a>
-                            </div>
-                         </div>
-                    </div>
-                    <div class="col-lg-8" >
-                        <div class="panel share">
-                            <div class="panel-header share">全部动态
-                            </div>
-                            <div class="panel-body">
-                                <div>
-                                    <form method="post" class="form" id="imgform">
-                                        <div class="row cl">
-                                            <span class="btn-upload form-group">
-									<input class="input-text upload-url" type="text" name="file" id="file" readonly="" style="width:200px">
-									<a href="javascript:void();" class="btn btn-primary upload-btn"><i class="Hui-iconfont"></i> 浏览文件</a>
-									<input type="file" multiple=""id="file-2" name="file-2" class="input-file valid">
-									</span>
-                                        </div>
-                                        <div class="row cl">
-                                            <input id="upload" class="btn btn-primary size-L hui-bounceinR" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+            <div class="rollpic cl " style="z-index: -1">
+
+                <div class="rollpicshow">
+                    <ul>
+                        <li style="background-image: url(__STATIC__/static/h-ui/images/background/indexcarouse/banner7.jpg);
+                         width:1680px ;height:430px;z-index: -1;"></li>
+                        <li style="background-image: url(__STATIC__/static/h-ui/images/background/indexcarouse/banner8.jpg);
+                         width:1680px ;height:430px;z-index: -1;"></li>
+                        <li style="background-image: url(__STATIC__/static/h-ui/images/background/indexcarouse/banner9.jpg);
+                         width:1680px ;height:430px;z-index: -1;"></li>
+                        <li style="background-image: url(__STATIC__/static/h-ui/images/background/indexcarouse/banner10.jpg);
+                         width:1680px ;height:430px;z-index: -1;"></li>
+                    </ul>
                 </div>
-                <div class="tabCon" >内容二</div>
-                <div class="tabCon" >内容三</div>
+
             </div>
-            </div>
-    </div>
+
+        <div class="search">
+        <input type="text" id="txt_Keyword"  placeholder="搜索您喜欢的图片" autocomplete="off">
+            <span ><a class="searchbt" href="javascript:void(0);" onclick="SearchImgDefault()" >
+                        <img style="margin-top: 11px;" src="__STATIC__/static/h-ui/images/background/indexcarouse/banner_search.png"></a></span>
+        </div>
+    <br>
+    <br>
+    <div class="main" style="margin: 0 auto; width: 1263px;">
+
+        <div style="width: 1263px; margin: 0 auto">
+            <div id="tab">
+                <div class="">
+                    <!--旅游开始-->
+                    <div class="cur">
+                        <p>
+                            <a href="http://travel.quanjing.com"  style="cursor:pointer;font-size: 17px;">
+                               <i class="Hui-iconfont">&#xe625;</i>全部图片</a>
+                            <a href="" style="font-size:18px;float:right; padding-top: 15px;" onclick="openSearchByKey('旅游')" title="查看更多旅行图片">更多&gt;</a>
+
+                        </p>
+                        <table width="1263" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <table border="0" cellspacing="0" cellpadding="0">
+                                        <tbody><tr>
+                                            <td class="hover_scale">
+                                                <a class="default-a-img media media " onclick="clickimg('旅游')"  href="#">
+                                                    <img src="__STATIC__/static/h-ui/images/background/tagphoto/lx1.png" width="598" height="215">
+
+                                                </a>
+                                                <div class="media" style="position: absolute;margin-top: -162px;margin-left: 192px;color: white" ><h1 style="letter-spacing: 75px">旅游</h1>
+                                                </div>
+                                            </td>
+                                            <td width="5">
+                                            </td>
+                                            <td class="hover_scale">
+                                                <a class="default-a-img media"  onclick="clickimg('风景')" href="#">
+                                                    <img src="__STATIC__/static/h-ui/images/background/tagphoto/ms2.png" width="418" height="215">
+
+                                                </a>
+                                                <div class="media" style="position: absolute; margin-left: 145px;margin-top: -150px;color: white;"><h1 style="letter-spacing: 75px">风景</h1>
+                                                </div>
+
+                                            </td>
+                                            <td width="5">
+                                            </td>
+                                        </tr>
+                                        </tbody></table>
+                                </td>
+                                <td rowspan="3" class="hover_scale">
+                                    <a class="default-a-img media"  onclick="clickimg('人文')" href="#">
+                                        <img src="__STATIC__/static/h-ui/images/background/tagphoto/rm5.png" width="237" height="435">
+
+
+                    </a>
+                                    <div class="media"  style="position: absolute;margin-top: -261px;margin-left: 49px;color: white" ><h1 style="letter-spacing: 75px">人文</h1>
+                                    </div>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td height="5">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <tbody><tr>
+                                    <td class="hover_scale">
+                                        <a class="default-a-img media"  onclick="clickimg('美食')" href="#">
+                                            <img src="__STATIC__/static/h-ui/images/background/tagphoto/ss(2).png" width="417" height="215">
+
+                                        </a>
+                                        <div class="media"  style="position: absolute;margin-top: -162px;margin-left: 124px;color: white" ><h1 style="letter-spacing: 75px">美食</h1>
+                                        </div>
+                                    </td>
+                                    <td width="5">
+                                    </td>
+                                    <td class="hover_scale">
+                                        <a class="default-a-img media"  href="#" onclick="clickimg('家居')">
+                                            <img src="__STATIC__/static/h-ui/images/background/tagphoto/ss(2).png" width="599" height="215">
+
+                                        </a>
+                                        <div class="media" style="position: absolute;margin-top: -162px;margin-left: 240px;color: white"  ><h1 style="letter-spacing: 75px">家居</h1>
+                                        </div>
+                                    </td>
+                                    <td width="5">
+                                    </td>
+                                </tr>
+                                </tbody></table>
+                        </td>
+                    </tr>
+                    </tbody></table>
 
 </div>
+<!--旅游结束-->
 </div>
-<!--<footer class="footer mt-20">-->
-    <!--<div class="container">-->
-        <!--<nav class="footer-nav">-->
-            <!--<a target="_blank" href="http://www.h-ui.net/aboutHui.shtml">关于H-ui</a>-->
-            <!--<span class="pipe">|</span>-->
-            <!--<a target="_blank" href="http://www.h-ui.net/copyright.shtml">软件著作权</a>-->
-            <!--<span class="pipe">|</span>-->
-            <!--<a target="_blank" href="http://www.h-ui.net/juanzeng.shtml">感谢捐赠</a>-->
-        <!--</nav>-->
-        <!--<p>Copyright &copy;2013-2017 H-ui.net All Rights Reserved. <br>-->
-            <!--<a rel="nofollow" target="_blank" href="http://www.miitbeian.gov.cn/">京ICP备15015336号-1</a>-->
-            <!--<br>-->
-            <!--未经允许，禁止转载、抄袭、镜像<br>-->
-            <!--用心做站，做不一样的站</p>-->
-    <!--</div>-->
-<!--</footer>-->
+</div>
+</div>
+</div>
+
+</div>
+<footer class="footer mt-20">
+<div class="container">
+<nav class="footer-nav">
+<a target="_blank" href="http://www.h-ui.net/aboutHui.shtml">关于H-ui</a>
+<span class="pipe">|</span>
+<a target="_blank" href="http://www.h-ui.net/copyright.shtml">软件著作权</a>
+<span class="pipe">|</span>
+<a target="_blank" href="http://www.h-ui.net/juanzeng.shtml">感谢捐赠</a>
+</nav>
+<p>Copyright &copy;2013-2017 H-ui.net All Rights Reserved. <br>
+<a rel="nofollow" target="_blank" href="http://www.miitbeian.gov.cn/">京ICP备15015336号-1</a>
+<br>
+未经允许，禁止转载、抄袭、镜像<br>
+用心做站，做不一样的站</p>
+</div>
+</footer>
+
+
+
+
+
 <!--普通弹出层-->
 <script type="text/javascript" src="__STATIC__/lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="__STATIC__/lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="__STATIC__/static/h-ui/js/H-ui.js"></script>
 <script type="text/javascript" src="__STATIC__/static/h-ui/js/head.js"></script>
-<script type="text/javascript" src="__STATIC__/static/h-ui.admin/js/H-ui.admin.page.js"></script>
+<script type="text/javascript" src="__STATIC__/static/h-ui/js/jcarousellite.min.js"></script>
 <!--/_footer /作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
@@ -108,6 +163,9 @@
 {include file="public/headjs" /}
 
 <script>
+    function  clickimg(name) {
+        window,location.href="{:url('photo/Photocenter')}";
+    }
     $("#upload").click(function () {
         if("{:session('user_id')}"){
         var fd= new FormData();
@@ -130,7 +188,14 @@
         }
 
     })
-
+    $(function(){
+        $(".rollpicshow").jCarouselLite({
+            auto: 2500, /*自动播放间隔时间*/
+            speed: 1500, /*速度*/
+            btnNext:".next",/*向前滚动*/
+            btnPrev:".prev",/*向后滚动*/
+            visible:1 /*显示数量*/
+        })});
 </script>
 <!--/此乃百度统计代码，请自行删除-->
 </body>

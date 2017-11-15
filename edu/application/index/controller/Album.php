@@ -30,7 +30,7 @@ class Album extends Base
             'photo' => ['require'=>'相册封面不能为空'],
             'albuminfo' => ['require'=>'相册介绍不能为空'],
         ];
-        $date =date('Y-m-d H-i-s');
+        $date =date('Y-m-d H.i.s');
         $result = $this -> validate($data,$rule,$meg);
         $user=Session::get('user_info.name');
         $url="./static/image/".$user."/";
@@ -60,7 +60,8 @@ class Album extends Base
         return ["status" => $status, "message" =>$result];
     }
     public  function  getAlbumlist(Request $request){
-        $album = AlbumModel::all(["user_id"=>"1"]);
+        $user_id = $request->param("user_id");
+        $album = AlbumModel::all(["user_id"=>$user_id]);
         return ["data"=>$album];
     }
 
