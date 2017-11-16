@@ -7,23 +7,29 @@
 {include file="public/head" /}
 <div class = "mainbody" style="background-color: #f7f7f6;margin-top: 66px;" >
     <div class="taglist">
-        <span class="hottag">热门标签:</span>
-        <span onclick="tagclick(this)">旅游</span>
+        <p class="hottag">热门标签:</p>
+        <span onclick="tagclick(this)" style="margin-left: 103px;">旅行</span>
         <span class="pipe">|</span>
         <span onclick="tagclick(this)">人文</span>
         <span class="pipe">|</span>
         <span onclick="tagclick(this)">美食</span>
         <span class="pipe">|</span>
-        <span onclick="tagclick(this)">家居</span>
+        <span onclick="tagclick(this)">小清新</span>
         <span class="pipe">|</span>
         <span onclick="tagclick(this)">风景</span>
+        <span class="pipe">|</span>
+        <span onclick="tagclick(this)">自拍</span>
+        <span class="pipe">|</span>
+        <span onclick="tagclick(this)">婚纱</span>
+        <span class="pipe">|</span>
+        <span onclick="tagclick(this)">宠物</span>
         <input type="text" id="searchphoto"  placeholder="搜索您喜欢的图片" autocomplete="off">
         <span ><a class="" href="javascript:void(0);" onclick="searchClick()" >
             <img style="margin-top: 0px;margin-left: -19px;background-color: #cecfdc;" src="__STATIC__/static/h-ui/images/background/indexcarouse/banner_search.png"></a></span>
 
     </div>
-    <div class="tagphoto">
-        <div class="taginfo" >
+    <div id="taginfo" class="tagphoto">
+        <div  class="taginfo" >
                <span style="font-size: 41px;letter-spacing: 11px;margin-left: 11px;">人文</span>
                 <span class="pipe" style="font-size: 27px;">|</span>
                <span> 用心记录下来，让更多的人感受文化和风情的魅力</span>
@@ -38,7 +44,7 @@
         <span class="btn btn-default radius">查看全部</span>
     </div>
     <div id="photowater" class="photowater">
-        <div id="photowater1" class="water1 col-lg-1">
+        <div id="photowater0" class="water1 col-lg-1">
             <div class="photo bk-gray" style="width: 300px;background-color: ghostwhite;">
                 <img style="width: 100%;" src="__STATIC__/static/h-ui/images/photocenter/photocenter11.jpg" class="thumbnail">
 
@@ -160,7 +166,7 @@
                 </div>
             </div>
         </div>
-        <div id="photowater2" class="water1 col-lg-4">
+        <div id="photowater1" class="water1 col-lg-4">
             <div class="photo bk-gray" style="width: 300px;background-color: ghostwhite;">
                 <img style="width: 100%;" src="__STATIC__/static/h-ui/images/photocenter/photocenter1.jpg" class="thumbnail">
 
@@ -284,7 +290,7 @@
 
 
         </div>
-        <div  id="photowater3" class="water1 col-xs-8">
+        <div  id="photowater2" class="water1 col-xs-8">
             <div class="photo bk-gray" style="width: 300px;background-color: ghostwhite;">
                 <img style="width: 100%;" src="__STATIC__/static/h-ui/images/photocenter/photocenter7.jpg" class="thumbnail">
 
@@ -407,6 +413,24 @@
             </div>
 
         </div>
+        <div class="col-lg-12">
+        <footer class="footer mt-20">
+            <div class="container">
+                <nav class="footer-nav">
+                    <a target="_blank" href="http://www.h-ui.net/aboutHui.shtml">关于H-ui</a>
+                    <span class="pipe">|</span>
+                    <a target="_blank" href="http://www.h-ui.net/copyright.shtml">软件著作权</a>
+                    <span class="pipe">|</span>
+                    <a target="_blank" href="http://www.h-ui.net/juanzeng.shtml">感谢捐赠</a>
+                </nav>
+                <p>Copyright &copy;2013-2017 H-ui.net All Rights Reserved. <br>
+                    <a rel="nofollow" target="_blank" href="http://www.miitbeian.gov.cn/">京ICP备15015336号-1</a>
+                    <br>
+                    未经允许，禁止转载、抄袭、镜像<br>
+                    用心做站，做不一样的站</p>
+            </div>
+        </footer>
+        </div>
     </div>
     <div id="modal-demo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -416,72 +440,7 @@
                     <a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
                 </div>
                 <div id="modalbody" class="modal-body">
-                    <div class="panel photosmall box-shadow">
-                        <div style="font-family: monospace;" class="panel-header small">
-                            <img  style="width:40px;height:40px;" src="/static/image/admin/2017-11-06 00-10-48.jpg" alt="" class="round">
-                            <a onclick="tootherinfo(1,this)"><u style="font-size: 20px;">admin</u></a><span class="dropDown f-r"> <a class="dropDown_A" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="icon Hui-iconfont"></i></a>
-	                                    <ul class="dropDown-menu menu radius box-shadow">
-	                                    	<li><a href="#">菜单一</a></li>
-	                                    	<li><a href="#">菜单二</a></li>
-	                                    </ul>
-                            </span>
-                            <br> <span class="f-l">2017-11-05 18-30-28</span>
-                            <span class="f-r">来自：<a onclick="toAlbum(this)">friend</a></span>
-                            <br>
-                            <p style="margin-bottom: 0px; margin-top: 6px;">meimeimei</p>
-                        </div>
-                        <div class="line"></div>
-                        <div class="panel-body">
-                            <img  src="/static/image/admin/admin2017-11-05 18-30-28.jpg" alt="" class="thumbnail preview">
-                        </div>
-                        <div class="panel-footer ">
-                            <div class="text-l">
-                                <span>标签:</span>
 
-                                <span type="button" style="cursor:pointer ; margin-left: 10px;color: #290a0a;
-    background-color: #f0f8ff;
-    border-color: #98c2ed;" class="btn btn-primary radius  size-S">小清新</span><span type="button" style="cursor:pointer ; margin-left: 10px;color: #290a0a;
-    background-color: #f0f8ff;
-    border-color: #98c2ed;" class="btn btn-primary radius  size-S">婚纱</span><span type="button" style="cursor:pointer ; margin-left: 10px;color: #290a0a;
-    background-color: #f0f8ff;
-    border-color: #98c2ed;" class="btn btn-primary radius  size-S">自拍</span></div>
-                            <div class="text-r">
-                                <a onclick="addsharenum(5,this)" name="share" style="color: rgb(65, 44, 204);"><i class="Hui-iconfont"></i><span>2</span></a>
-                                <span class="pipe">|</span>
-                                <a onclick="addclicknum(5,this)" name="click" style="color: rgb(65, 44, 204);"><i class="Hui-iconfont"></i><span>2</span></a>
-                                <span class="pipe">|</span>
-                                <a onclick="comlist(2,this)"><i class="Hui-iconfont"></i><span>5</span></a>
-                            </div>
-                            <div class="hui-fadeinT">
-                                <ul class="commentList" style="display: none;overflow-y: auto;max-height: 262px;">
-                                    <li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg"></i></a>
-                                        <div class="comment-main">
-                                            <header class="comment-header">
-                                                <div class="comment-meta"><a class="comment-author" href="#">辉哥</a> 评论于
-                                                    <time title="2014年8月31日 下午3:20" datetime="2014-08-31T03:54:20">2014-8-31 15:20</time>
-                                                </div>
-                                            </header>
-                                            <div class="comment-body">
-                                                <p>你是猴子派来的救兵吗？</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="comment-main">
-                                            <header class="comment-header">
-
-                                            </header>
-                                            <div class="comment-body text-r">
-                                                <input type="text" class="input-text" placeholder="" name="albumlist" id="">
-                                                <button class=" btn btn-primary-outline radius size-S hui-fadeinL">发表评论</button>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
@@ -489,23 +448,9 @@
             </div>
         </div>
     </div>
+
 </div>
-<footer class="footer mt-20">
-    <div class="container">
-        <nav class="footer-nav">
-            <a target="_blank" href="http://www.h-ui.net/aboutHui.shtml">关于H-ui</a>
-            <span class="pipe">|</span>
-            <a target="_blank" href="http://www.h-ui.net/copyright.shtml">软件著作权</a>
-            <span class="pipe">|</span>
-            <a target="_blank" href="http://www.h-ui.net/juanzeng.shtml">感谢捐赠</a>
-        </nav>
-        <p>Copyright &copy;2013-2017 H-ui.net All Rights Reserved. <br>
-            <a rel="nofollow" target="_blank" href="http://www.miitbeian.gov.cn/">京ICP备15015336号-1</a>
-            <br>
-            未经允许，禁止转载、抄袭、镜像<br>
-            用心做站，做不一样的站</p>
-    </div>
-</footer>
+
 
 
 
@@ -520,7 +465,10 @@
 <script type="text/javascript" src="__STATIC__/static/h-ui/js/jcarousellite.min.js"></script>
 <script type="text/javascript" src="__STATIC__/static/h-ui/js/photo.js"></script>
 <!--/_footer /作为公共模版分离出去-->
+<!--初始化-->
+<script type="text/javascript">
 
+</script>
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript">
     $("#topnavt").find("li").each(function (index) {
@@ -534,17 +482,59 @@
 {include file="public/headjs" /}
 <script>
     var photolist ;
+    var url=decodeURI(location.href);
+    if(url.indexOf("?")>-1) {
+        var tmp1 = url.split("?")[1];
+        taginfoajax(tmp1);
+        ajax(tmp1);
+    }
+
     function searchClick() {
-       var name = $("#searchphoto").val();
+        var name = $("#searchphoto").val();
+        if (name == "") {
+            $.Huimodalalert("输入为空", 1000);
+        }
+        else {
+            ajax(name);
+        }
+    }
+    function tagclick(type) {
+       var tag = $(type).text();
+        taginfoajax(tag);
+       ajax(tag);
+
+    }
+    function  taginfoajax(tag) {
+        $.ajax({
+            type:'post',
+            url:"{:url('activity/getActivityinfo')}",
+            data:{"name":tag},
+            async:false,
+            success:function (data) {
+                $("#taginfo").css("background-image","url(__STATIC__/static/h-ui/images/tagphoto/"+tag+".jpg)");
+                $("#taginfo").find("span").each(function (index) {
+                    if(index==0){
+                        $(this).text(data.activity_name)
+                    }
+                    if(index==2){
+                        $(this).text(data.activity_info);
+                    }
+                })
+            }
+        })
+    }
+    function ajax(tag) {
         $.ajax({
             type:'post',
             url:"{:url('tag/getPhotosByTag')}",
-            data:{"tag":name},
+            data:{"tag":tag},
             async:false,
             success:function (data) {
-                if(data.data.length>=1) {
-                    setPhotoWater(data.data);
+                if(data.data!=0) {
                     photolist=data.data;
+                    var photolist1 = photolist.sort(compare('sharenum','clicknum','commentnum'));
+                    setPhotoWater(photolist1.slice(0,6));
+
                 }
                 else {
                     $.Huimodalalert("没有符合条件的图片",1000);
@@ -552,41 +542,20 @@
             }
         })
     }
-
-    function tagclick(type) {
-       var tag = $(type).text();
-       $.ajax({
-           type:'post',
-           url:"{:url('tag/getPhotosByTag')}",
-           data:{"tag":tag},
-           async:false,
-           success:function (data) {
-                if(data.data.length>=1) {
-
-                    setPhotoWater(data.data);
-                    photolist=data.data;
-                }
-                else {
-                    $.Huimodalalert("没有符合条件的图片",1000);
-                }
-           }
-       })
-
-    }
     function  setPhotoWater(data) {
 
+            $("#photowater0").empty();
             $("#photowater1").empty();
             $("#photowater2").empty();
-            $("#photowater3").empty();
             for (var i = 0; i < data.length; i++) {
-                $("#photowater"+(i+1)).append("<div class=\"photo bk-gray\" style=\"width: 300px;background-color: ghostwhite;\">\n" +
+                $("#photowater"+(i%3)).append("<div class=\"photo bk-gray\" style=\"width: 300px;background-color: ghostwhite;\">\n" +
                     "                <img onclick=\"showmodal("+i+",this)\" style=\"width: 100%;\" src=\"__STATIC__/image/"+data[i].user_info.name+"/"+data[i].photo_name+"\" class=\"thumbnail\">\n" +
                     "\n" +
                     "                <div class=\"text-l\" style=\"    margin-left: 9px; margin-top: 8px;\"></div>\n" +
                     "                <div class=\"text-r\" style=\"margin-top: 5px;margin-right: 10px;\">\n" +
-                    "                    <a onclick=\"addsharenum(5,this)\" name=\"share\" style=\"color: rgb(16, 15, 24);\"><i class=\"Hui-iconfont\"></i><span>"+data[i].sharenum+"</span></a>\n" +
+                    "                    <a onclick=\"addsharenum("+data[i].photo_id+",this)\" name=\"share\" style=\"color: rgb(16, 15, 24);\"><i class=\"Hui-iconfont\"></i><span>"+data[i].sharenum+"</span></a>\n" +
                     "                    <span class=\"pipe\">|</span>\n" +
-                    "                    <a onclick=\"addclicknum(5,this)\" name=\"click\" style=\"color: rgb(16, 15, 24);\"><i class=\"Hui-iconfont\"></i><span>"+data[i].clicknum+"</span></a>\n" +
+                    "                    <a onclick=\"addclicknum("+data[i].photo_id+",this)\" name=\"click\" style=\"color: rgb(16, 15, 24);\"><i class=\"Hui-iconfont\"></i><span>"+data[i].clicknum+"</span></a>\n" +
                     "                    <span class=\"pipe\">|</span>\n" +
                     "                    <a onclick=\"showmodal("+i+",this)\"><i class=\"Hui-iconfont\"></i><span>"+data[i].commentnum+"</span></a>\n" +
                     "                </div>\n" +
@@ -604,16 +573,16 @@
                     "                </div>\n" +
                     "            </div>");
                 for(var j =0;j<data[i].taglist.length;j++) {
-                    $("#photowater"+(i+1)).find(".text-l:last").append("<span type='button' style=\"cursor:pointer ; margin-left: 10px;color: #290a0a;\n" +
+                    $("#photowater"+(i%3)).find(".text-l:last").append("<span type='button' style=\"cursor:pointer ; margin-left: 10px;color: #290a0a;\n" +
                         "    background-color: #f0f8ff;\n" +
                         "    border-color: #98c2ed;\" class='btn btn-primary radius  size-MINI'>"+data[i].taglist[j].tag+"</span>")
                 }
                 if(data[i].isshare==1){
 
-                    $("#photowater"+(i+1)).find("a[name='share']").css("color", "#412ccc");
+                    $("#photowater"+(i%3)).find("a[name='share']").css("color", "#412ccc");
                 }
                 if(data[i].isclick==1){
-                    $("#photowater"+(i+1)).find("a[name='click']").css("color", "#412ccc");
+                    $("#photowater"+(i%3)).find("a[name='click']").css("color", "#412ccc");
                 }
             }
 

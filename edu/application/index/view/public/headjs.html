@@ -1,5 +1,14 @@
 <script>
+    $("#topnavt").find("a").each(function () {
+        $(this).click(function () {
+            $("#topnavt").find("li").each(function () {
+                $(this).removeClass("current");
+            })
 
+           $(this).parent().addClass("current");
+
+                    });
+    })
     $(function () {
         $("#tab").Huitab({
             index:0

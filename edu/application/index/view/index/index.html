@@ -26,7 +26,7 @@
 
         <div class="search">
         <input type="text" id="txt_Keyword"  placeholder="搜索您喜欢的图片" autocomplete="off">
-            <span ><a class="searchbt" href="javascript:void(0);" onclick="SearchImgDefault()" >
+            <span ><a class="searchbt" href="javascript:void(0);" onclick="SearchImg()" >
                         <img style="margin-top: 11px;" src="__STATIC__/static/h-ui/images/background/indexcarouse/banner_search.png"></a></span>
         </div>
     <br>
@@ -51,11 +51,11 @@
                                     <table border="0" cellspacing="0" cellpadding="0">
                                         <tbody><tr>
                                             <td class="hover_scale">
-                                                <a class="default-a-img media media " onclick="clickimg('旅游')"  href="#">
+                                                <a class="default-a-img media media " onclick="clickimg('旅行')"  href="#">
                                                     <img src="__STATIC__/static/h-ui/images/background/tagphoto/lx1.png" width="598" height="215">
 
                                                 </a>
-                                                <div class="media" style="position: absolute;margin-top: -162px;margin-left: 192px;color: white" ><h1 style="letter-spacing: 75px">旅游</h1>
+                                                <div class="media" style="position: absolute;margin-top: -162px;margin-left: 192px;color: white" ><h1 style="letter-spacing: 75px">旅行</h1>
                                                 </div>
                                             </td>
                                             <td width="5">
@@ -103,11 +103,11 @@
                                     <td width="5">
                                     </td>
                                     <td class="hover_scale">
-                                        <a class="default-a-img media"  href="#" onclick="clickimg('家居')">
+                                        <a class="default-a-img media"  href="#" onclick="clickimg('婚纱')">
                                             <img src="__STATIC__/static/h-ui/images/background/tagphoto/ss(2).png" width="599" height="215">
 
                                         </a>
-                                        <div class="media" style="position: absolute;margin-top: -162px;margin-left: 240px;color: white"  ><h1 style="letter-spacing: 75px">家居</h1>
+                                        <div class="media" style="position: absolute;margin-top: -162px;margin-left: 240px;color: white"  ><h1 style="letter-spacing: 75px">婚纱</h1>
                                         </div>
                                     </td>
                                     <td width="5">
@@ -164,7 +164,16 @@
 
 <script>
     function  clickimg(name) {
-        window,location.href="{:url('photo/Photocenter')}";
+        window,location.href=encodeURI("../photo/photocenter.html?"+name+"");
+    }
+    function  SearchImg() {
+        if($("#txt_Keyword").val()!="") {
+            var name = $("#txt_Keyword").val();
+            window, location.href = encodeURI("../photo/photocenter.html?" + name + "");
+        }
+        else {
+            $.Huimodalalert("输入为空","1000");
+        }
     }
     $("#upload").click(function () {
         if("{:session('user_id')}"){
