@@ -12,9 +12,13 @@ use app\index\model\Pclick;
 use app\index\model\Pshare;
 use think\Session;
 class Activity extends Base{
-      public  function  activittCenter(){
+      public  function  Activitycenter(){
           return $this->view->fetch();
       }
+    public  function  Activityinfo(){
+        return $this->view->fetch();
+    }
+
       public  function  getActivityinfo(Request $request){
           $name = $request->param("name");
           $activity=ActivityModel::get(["activity_name"=>$name]);
@@ -30,5 +34,9 @@ class Activity extends Base{
               return ["status"=>"1","message"=>"活动名可用"];
           }
       }
+    public  function  getAllActivityinfo(Request $request){
+        $activity=ActivityModel::all();
+        return $activity;
+    }
 
 }

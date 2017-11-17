@@ -4,7 +4,7 @@
 <body>
 <!--_header 作为公共模版分离出去-->
 {include file="public/head" /}
-<div class="mainbody" style="background-color:  #98c2ed;;">
+<div class="mainbody" style="background-color: #e0e6cc;margin-top: -26px;">
     <div class="container ui-sortable">
         <div class="panel panel-default" style="margin-top: 64px;">
             <div class="panel-header top">
@@ -13,7 +13,8 @@
                          src="__STATIC__/image/{:session('user_info.name')}/{:session('user_info.photo')}" alt="" class="round">
 
                     <br>
-                    <p style="margin-left: 25px;  margin-top: -4px;  font-size: 26px;">{:session('user_info.name')}</p>
+                    <p  style="margin-left: 25px;  margin-top: -4px;  font-size: 26px; "><u>{:session('user_info.name')}</u></p>
+                    <p  style="margin-top: -4px;  font-size: 16px;text-align: center;margin-left: -462px; ">{:session('user_info.introduction')}</p>
                 </div>
             </div>
             <div class="panel-body">
@@ -59,44 +60,47 @@
                                 <div class="panel-body">
                                     <div id="albumcenter" class="hui-fadeinR"
                                          style="overflow-y: auto;height: 743px;display:block;background-color: #fff;margin-top: 20px; min-width: 614px;margin-left: -15px;">
-                                    <div class=" panel photosmall box-shadow">
-                                            <div style="font-family: monospace;" class="panel-header small">我的相册
-                                                <span style="margin-left: 253px;font-size: 2px;">创建时间:</span> <span>2015-10-10 15-10-20</span>
+                                            <div class="album-item col-lg-5 bk-gray radius" >
+                                                <div class="album-img">
+                                                    <img src="/static/image/Miller/Miller2017-11-16 20.52.57.jpg">
+                                                </div>
+                                                <div class="album-title">《仙剑奇侠传》赵灵儿<span class="c-999">(20张)</span></div>
+                                                <div class="album-bg">
+                                                    <div class="album-bg-Fir"></div>
+                                                    <div class="album-bg-Sec"></div>
+                                                </div>
                                             </div>
-
-                                            <div class="panel-body">
-                                                <img style="max-width: 264px; min-height: 199px;"
-                                                     src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt=""
-                                                     class="thumbnail preview">
-                                                <img style="max-width: 264px; min-height: 199px;"
-                                                     src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt=""
-                                                     class="thumbnail">
-
+                                            <div class="album-item col-lg-5 bk-gray radius" >
+                                                <div class="album-img">
+                                                    <img src="/static/image/Miller/Miller2017-11-16 20.52.57.jpg">
+                                                </div>
+                                                <div class="album-title">《仙剑奇侠传》赵灵儿<span class="c-999">(20张)</span></div>
+                                                <div class="album-bg">
+                                                    <div class="album-bg-Fir"></div>
+                                                    <div class="album-bg-Sec"></div>
+                                                </div>
                                             </div>
-                                            <div class="panel-footer text-c">
-                                                <a style="margin-left: 93px" href="#">查看所有图片<i
-                                                        class="arrow Hui-iconfont">&#xe6d7;</i></a>
+                                        <div class="album-item col-lg-5 bk-gray radius" >
+                                            <div class="album-img">
+                                                <img src="/static/image/Miller/Miller2017-11-16 20.52.57.jpg">
                                             </div>
-                                        </div>
-                                        <div class="panel photosmall box-shadow">
-                                            <div style="font-family: monospace;" class="panel-header small">家人
-                                                <span style="margin-left: 253px;font-size: 2px;">创建时间:</span> <span>2015-10-10 15-10-20</span>
-                                            </div>
-
-                                            <div class="panel-body">
-                                                <img style="max-width: 264px; min-height: 199px;"
-                                                     src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt=""
-                                                     class="thumbnail">
-                                                <img style="max-width: 264px; min-height: 199px;"
-                                                     src="__STATIC__/static/h-ui/images/background/personbgd.jpg" alt=""
-                                                     class="thumbnail">
-
-                                            </div>
-                                            <div class="panel-footer text-c">
-                                                <a style="margin-left: 93px" href="#">查看所有图片<i
-                                                        class="arrow Hui-iconfont">&#xe6d7;</i></a>
+                                            <div class="album-title">《仙剑奇侠传》赵灵儿<span class="c-999">(20张)</span></div>
+                                            <div class="album-bg">
+                                                <div class="album-bg-Fir"></div>
+                                                <div class="album-bg-Sec"></div>
                                             </div>
                                         </div>
+                                        <div class="album-item col-lg-5 bk-gray radius" >
+                                            <div class="album-img">
+                                                <img src="/static/image/Miller/Miller2017-11-16 20.52.57.jpg">
+                                            </div>
+                                            <div class="album-title">《仙剑奇侠传》赵灵儿<span class="c-999">(20张)</span></div>
+                                            <div class="album-bg">
+                                                <div class="album-bg-Fir"></div>
+                                                <div class="album-bg-Sec"></div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div id="addalbum" class="hui-fadeinR"
                                          style="display:none;background-color: #fff;margin-top: 25px; min-width: 614px;margin-left: -15px;">
@@ -169,8 +173,6 @@
                                                            name="albumlist" id="albumlist">
                                                 </div>
                                             </div>
-                                            <br>
-                                            <br>
                                             <div class="row cl">
                                                 <label class="form-label col-xs-3">照片：</label>
                                                 <span class="btn-upload form-group col-xs-8">
@@ -182,7 +184,6 @@
                                            class="input-file valid" onchange="changImg1(event)">
 									</span>
                                             </div>
-                                            <br>
                                             <div class="row cl">
                                                 <div class="form-label col-xs-9 ">
                                                     <img alt="暂无图片" class="thumbnail text-c"
@@ -190,7 +191,6 @@
                                                          src="__STATIC__/static/h-ui/images/background/prephoto.svg"</c:if>
                                                 </div>
                                             </div>
-                                            <br>
                                             <div class="row cl">
                                                 <label class="form-label col-xs-3">照片介绍：</label>
                                                 <div class="formControls col-xs-8">
@@ -359,19 +359,17 @@
                             <div class="row cl">
                                 <label class="form-label col-xs-3">个人头像：</label>
                                 <span class="btn-upload form-group col-xs-8">
-									<input class="input-text upload-url" type="text" name="photo" id="profile" readonly=""
-                                           style="width:200px" onchange="infoChange(event)">
 									<a href="javascript:void();" class="btn btn-primary upload-btn"><i
-                                            class="Hui-iconfont"></i> 浏览文件</a>
+                                            class="Hui-iconfont"></i> 更换头像</a>
 									<input type="file" multiple="" id="profile-1" name="photo-1" class="input-file valid"
                                            onchange="changImg2(event)">
 									</span>
                             </div>
                             <div class="row cl">
-                                <div class="form-label col-xs-9 ">
+                                <div class="form-label col-xs-9">
                                     <img alt="暂无图片" class="round text-c"
                                          style="width: 100px;height:100px" id="myImg2"
-                                         src="__STATIC__/static/h-ui/images/background/prephoto.svg"</c:if>
+                                         src="__STATIC__/image/{:session('user_info.name')}/{:session('user_info.photo')}" </c:if>
                                 </div>
                             </div>
                             <div class="row cl">
@@ -435,7 +433,13 @@
             formdata.append("email",$("#email").val());
             formdata.append("telephone",$("#telephone").val());
             formdata.append("password",$("#password").val());
-            formdata.append("uploadfile",$("#profile-1")[0].files[0])
+            if($("#profile-1")[0].files[0]) {
+                formdata.append("uploadfile", $("#profile-1")[0].files[0]);
+                formdata.append("uploadfile1", "1");
+            }
+            else {
+                formdata.append("uploadfile1", "0");
+            }
             $.ajax({
                 type:"post",
                 url:"{:url('user/updateUser')}",
@@ -445,7 +449,7 @@
                 success:function (data) {
                     if(data.status=="1") {
                         alert(data.message);
-                       // window.location.href="{:url('index/index')}";
+                        window.location.href="{:url('user/User_info')}";
 
                     }
                     else
@@ -489,21 +493,16 @@
         document.getElementById("addalbum").style.display = "none";
         $("#albumcenter").empty();
         for (var i = data.length-1; i >=0; i--) {
-            $("#albumcenter").append("<div class=\"panel photosmall box-shadow\">\n" +
-                "                                            <div style=\"font-family: monospace;\" class=\"panel-header small\">" + data[i].album_name + "\n" +
-                "                                              <span style=\"margin-left: 253px;font-size: 2px;\">创建时间:</span> <span>" + data[i].creat_time.replace('.',':').replace('.',':') + "</span>\n" +
-                "                                            </div>\n" +
-                "\n" +
-                "                                            <div class=\"panel-body\">\n" +
-                "                                                <img style=\"max-width: 264px; min-height: 199px;\" src=\"__STATIC__/image/" + "{:session('user_info.name')}/" + data[i].album_photo + "\" alt=\"\" class=\"thumbnail\">\n" +
-                "                                                <img style=\"max-width: 264px; min-height: 199px;\" src=\"__STATIC__/image/admin/adminzxc.jpg\" alt=\"\" class=\"thumbnail\">\n" +
-                "\n" +
-                "                                            </div>\n" +
-                "                                            <div class=\"panel-footer text-c\">\n" +
-                "                                                <a style=\"margin-left: 93px\" onclick='addphotolist(this)'name='"+data[i].album_name +"'>查看所有图片<i class=\"arrow Hui-iconfont\">&#xe6d7;</i></a>\n" +
-                "                                            </div>\n" +
-                "                                        </div>"
-            )
+            $("#albumcenter").append("   <div onclick=\"addphotolist(this)\" name=\""+data[i].album_name+"\" class=\"album-item col-lg-5 bk-gray radius\" >\n" +
+                "                                                <div class=\"album-img\">\n" +
+                "                                                    <img src=\"/static/image/"+"{:session('user_info.name')}/"+ data[i].album_photo +"\">\n" +
+                "                                                </div>\n" +
+                "                                                <div class=\"album-title\">" + data[i].album_name + "<span class=\"c-999\">(" + data[i].photonum + "张)</span></div>\n" +
+                "                                                <div class=\"album-bg\">\n" +
+                "                                                    <div class=\"album-bg-Fir\"></div>\n" +
+                "                                                    <div class=\"album-bg-Sec\"></div>\n" +
+                "                                                </div>\n" +
+                "                                            </div>")
         }
     }
     </script>
@@ -589,21 +588,19 @@
         });
     }
     function addphotolist(type) {
-            var obj=$(type);
-            var  albumname =obj.attr("name");
-            setAlbumphoto(albumname);
+        var obj=$(type);
+        var  albumname =obj.attr("name");
+        setalbumphoto(albumname);
 
     }
-    function setAlbumphoto(albumname) {
+    function setalbumphoto(albumname) {
         var id = "{:session('user_id')}";
         $.ajax({
             type:'POST',
             url: "{:url('photo/getPlist')}",
             data:{"albumname":albumname,"user_id":id},
             success:function (data) {
-
                 setPhotolist(data.data,"photocenter");
-
                 document.getElementById("albumcenter").style.display = "none";
                 document.getElementById("addalbum").style.display = "none";
                 document.getElementById("photocenter").style.display="block";
@@ -617,129 +614,35 @@
       else
           obj =$("#usercenter");
       obj.empty();
-
+        var userid = "{:session('user_id')}";
       for (var i = data.length-1; i >=0; i--) {
           photoadd(data[i],obj);
+          if(userid==data[i].user_info.user_id){
+              obj.find(".dropDown-menu:last").empty();
+              obj.find(".dropDown-menu:last").append("<li><a onclick=\"deletephoto(this,"+data[i].photo_id +")\" >删除照片</a></li>")
+          }
+
       }
 
     }
+    function deletephoto(type,id) {
+      alert(id)
+        $.ajax({
+            type:"POST",
+            url:"{:url('photo/deletephoto')}",
+            data:{"id":id},
+            success:function (data) {
 
+                $.Huimodalalert(data,1000);
+                addallphoto();
+            }
+        })
+    }
     function  toAlbum(type) {
         $("#tab").Huitab({
             index: 1
         });
-        setAlbumphoto($(type).html());
-    }
-    function  addsharenum(id,type) {
-        if ($(type).css("color") != "rgb(65, 44, 204)") {
-            $(type).css("color", "#412ccc");
-            var sharenum = $(type).find("span").text();
-            $(type).find("span").text(parseInt(sharenum)+1);
-            $.ajax({
-                type:"POST",
-                url:"{:url('photo/addSharenum')}",
-                data:{"photo_id":id},
-                success:function (data) {
-
-                }
-            })
-        }
-    }
-    function  addclicknum(id,type) {
-
-        if ($(type).css("color") != "rgb(65, 44, 204)") {
-            $(type).css("color", "#412ccc");
-            var clicknum = $(type).find("span").text();
-            $(type).find("span").text(parseInt(clicknum)+1);
-            $.ajax({
-                type:"POST",
-                url:"{:url('photo/addClicknum')}",
-                data:{"photo_id":id},
-                success:function (data) {
-
-                }
-            })
-        }
-    }
-    function comlist(id,type) {
-        var obj =  $(type).parent().parent().find("ul");
-       if($(type).parent().parent().find("ul").css('display')=="none") {
-           $(type).parent().parent().find("ul").css("display", "block");
-
-            $.ajax({
-                type:"GET",
-                url:"{:url('comment/getComment')}",
-                data:{"photo_id":id},
-                success:function (data) {
-                   addCommentlist(data.data,obj,id);
-                }
-            })
-
-       }
-       else
-           $(type).parent().parent().find("ul").css("display","none");
-
-    }
-    function  addCommentlist(data,obj,id) {
-            obj.empty();
-        obj.append(" <li class=\"item cl\">\n" +
-            "                                                            <div class=\"comment-main\">\n" +
-            "                                                                <header class=\"comment-header\">\n" +
-            "\n" +
-            "                                                                </header>\n" +
-            "                                                                <div class=\"comment-body text-r\">\n" +
-            "                                                                    <input type=\"text\" class=\"input-text\" placeholder=\"\"\n" +
-            "                                                                           name=\"commenttext\" id=\"\">\n" +
-            "                                                                    <button onclick='commentbtn(this,"+id+")' class=\" btn btn-primary-outline radius size-S hui-fadeinL\">发表评论</button>\n" +
-            "                                                                </div>\n" +
-            "                                                            </div>\n" +
-            "                                                        </li>")
-            for(var i =0;i<data.length;i++){
-                obj.append("  <li class=\"item cl\"> <a href=\"#\"><i class=\"avatar size-L radius\"><img alt=\"\" src=\"http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg\"></i></a>\n" +
-                    "                                                            <div class=\"comment-main\">\n" +
-                    "                                                                <header class=\"comment-header\">\n" +
-                    "                                                                    <div class=\"comment-meta\"><a class=\"comment-author\" href=\"#\">"+data[i].name+"</a> 评论于\n" +
-                    "                                                                        <time title=\"2014年8月31日 下午3:20\" datetime=\"2014-08-31T03:54:20\">"+data[i].creat_time+"</time>\n" +
-                    "                                                                    </div>\n" +
-                    "                                                                </header>\n" +
-                    "                                                                <div class=\"comment-body\">\n" +
-                    "                                                                    <p>"+data[i].comment+"</p>\n" +
-                    "                                                                </div>\n" +
-                    "                                                            </div>\n" +
-                    "                                                        </li>")
-            }
-
-    }
-    function  commentbtn(type ,id) {
-        var comment = $(type).parent().find("input").val();
-        var obj = $(type).parent().parent().parent();
-        if (comment == "") {
-            $.Huimodalalert("未填写内容",1000);
-
-        }
-        else {
-            $.ajax({
-                type:'POST',
-                url: "{:url('comment/addComment')}",
-                data:{"comment":comment,"photo_id":id},
-                success:function (data) {
-                        $.Huimodalalert(data.message,1000);
-                    obj.after("  <li class=\"item cl\"> <a href=\"#\"><i class=\"avatar size-L radius\"><img alt=\"\" src=\"http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg\"></i></a>\n" +
-                        "                                                            <div class=\"comment-main\">\n" +
-                        "                                                                <header class=\"comment-header\">\n" +
-                        "                                                                    <div class=\"comment-meta\"><a class=\"comment-author\" href=\"#\">"+data.data.name+"</a> 评论于\n" +
-                        "                                                                        <time title=\"2014年8月31日 下午3:20\" datetime=\"2014-08-31T03:54:20\">"+data.data.creat_time+"</time>\n" +
-                        "                                                                    </div>\n" +
-                        "                                                                </header>\n" +
-                        "                                                                <div class=\"comment-body\">\n" +
-                        "                                                                    <p>"+data.data.comment+"</p>\n" +
-                        "                                                                </div>\n" +
-                        "                                                            </div>\n" +
-                        "                                                        </li>")
-                    $(type).parent().find("input").val("");
-                }
-            })
-        }
+        setalbumphoto($(type).html());
     }
     </script>
 <script>
@@ -802,11 +705,13 @@
     $("#Huitags-demo1").Huitags(
         {
             maxlength: 20,
-            number: 8,
+            number: 4,
             tagsDefault: ["风景", "小清新", "旅行", "宠物", "婚纱", "自拍", "人文","美食"],
         }
     );
 
+    $("#Huitags-demo1").find(".Huitags-editor").empty();
+    console.log( $("#Huitags-demo1").find(".Huitags-editor").html())
     function changImg(e) {
         for (var i = 0; i < e.target.files.length; i++) {
             var file = e.target.files.item(i);
@@ -847,6 +752,7 @@
             freader.readAsDataURL(file);
             freader.onload = function (e) {
                 $("#myImg2").attr("src", e.target.result);
+                document.getElementById("login2").style.display='block';
             };
         }
     }
@@ -880,7 +786,6 @@
         albumdata.append("albuminfo", $("#albuminfo").val());
         albumdata.append("photo", $("#photo").val());
         albumdata.append("photo-1", $("#photo-1")[0].files[0])
-        alert(albumdata.get("albumname"));
         $.ajax({
             type: "POST",
             url: "{:url('album/addAlbum')}",
@@ -892,6 +797,7 @@
                     $.Huimodalalert(data.message, "2000");
                     document.getElementById("albumcenter").style.display = "block";
                     document.getElementById("addalbum").style.display = "none";
+                    addalbumlist();
 
                 }
                 else

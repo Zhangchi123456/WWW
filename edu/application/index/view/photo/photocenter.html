@@ -5,7 +5,7 @@
 <!--_header 作为公共模版分离出去-->
 
 {include file="public/head" /}
-<div class = "mainbody" style="background-color: #f7f7f6;margin-top: 66px;" >
+<div class = "mainbody" style="background-color: #f7f7f6;margin-top: 40px;" >
     <div class="taglist">
         <p class="hottag">热门标签:</p>
         <span onclick="tagclick(this)" style="margin-left: 103px;">旅行</span>
@@ -38,10 +38,10 @@
         </div>
     </div>
     <div class="btn-group center">
-        <span class="btn btn-primary radius">精选</span>
-        <span class="btn btn-default radius">热门</span>
-        <span class="btn btn-default radius">最新</span>
-        <span class="btn btn-default radius">查看全部</span>
+        <span onclick="sortClick(this)" class="btn btn-primary radius">精选</span>
+        <span onclick="sortClick(this)" class="btn btn-default radius">热门</span>
+        <span onclick="sortClick(this)" class="btn btn-default radius">最新</span>
+        <span onclick="sortClick(this)" class="btn btn-default radius">查看全部</span>
     </div>
     <div id="photowater" class="photowater">
         <div id="photowater0" class="water1 col-lg-1">
@@ -431,6 +431,7 @@
             </div>
         </footer>
         </div>
+        <div class="clear" style="clear:both"></div>
     </div>
     <div id="modal-demo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -483,11 +484,12 @@
 <script>
     var photolist ;
     var url=decodeURI(location.href);
+    var tmp1 = "旅行";
     if(url.indexOf("?")>-1) {
-        var tmp1 = url.split("?")[1];
-        taginfoajax(tmp1);
-        ajax(tmp1);
+         tmp1 = url.split("?")[1];
     }
+    taginfoajax(tmp1);
+    ajax(tmp1);
 
     function searchClick() {
         var name = $("#searchphoto").val();
@@ -543,7 +545,6 @@
         })
     }
     function  setPhotoWater(data) {
-
             $("#photowater0").empty();
             $("#photowater1").empty();
             $("#photowater2").empty();
@@ -564,16 +565,16 @@
                     "                <div style=\"height: 70px; margin-top: 6px;\">\n" +
                     "                    <img style=\"width: 36px;  height: 36px;margin-left: 6px;\" src=\"/static/image/"+data[i].user_info.name+"/"+data[i].user_info.photo+"\" alt=\"\" class=\"round\">\n" +
                     "                    <a onclick=\"tootherinfo("+data[i].user_info.user_id+",this)\"><u style=\"font-size: 16px;\">"+data[i].user_info.name+"</u></a>\n" +
-                    "                    <span>上传到专辑</span>\n" +
+                    "                    <span>上传到相册</span>\n" +
                     "                    <span onclick=\"tootherinfo("+data[i].user_info.user_id+",this)\" style=\"font-size: 14px;cursor: pointer;text-decoration: underline;color: #0f6265;\">"+data[i].albumname+"</span>\n" +
                     "                    <br>\n" +
-                    "                    <span style=\"margin-left: 167px;margin-bottom: 15px\">"+data[i].creat_time+"</span>\n" +
+                    "                    <span style=\"margin-left: 167px;margin-bottom: 15px\">"+data[i].creat_time.replace('.',':').replace('.',':')+"</span>\n" +
                     "                    <br>\n" +
                     "\n" +
                     "                </div>\n" +
                     "            </div>");
                 for(var j =0;j<data[i].taglist.length;j++) {
-                    $("#photowater"+(i%3)).find(".text-l:last").append("<span type='button' style=\"cursor:pointer ; margin-left: 10px;color: #290a0a;\n" +
+                    $("#photowater"+(i%3)).find(".text-l:last").append("<span type='button' onclick='tagsearch(this)' style=\"cursor:pointer ; margin-left: 10px;color: #290a0a;\n" +
                         "    background-color: #f0f8ff;\n" +
                         "    border-color: #98c2ed;\" class='btn btn-primary radius  size-MINI'>"+data[i].taglist[j].tag+"</span>")
                 }
@@ -594,7 +595,25 @@
 
 
     }
+    function  sortClick(type) {
+        var text = $(type).text();
+        if(text=="热门"){
+            var photolist1 = photolist.sort(compare('sharenum','clicknum','commentnum'));
+            setPhotoWater(photolist1.slice(0,10));
+        }
+        if(text=="最新"){
 
+            var photolist1 = photolist.sort(getlast('creat_time'));
+            setPhotoWater(photolist1);
+        }
+        if(text=="查看全部"){
+            setPhotoWater(photolist);
+        }
+        if(text=="精选"){
+            var photolist1 = photolist.sort(compare('sharenum','clicknum','commentnum'));
+            setPhotoWater(photolist1.slice(0,6));
+        }
+    }
 
 </script>
 

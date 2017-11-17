@@ -1,0 +1,112 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="public/meta" /}
+<link rel="stylesheet" type="text/css" href="__STATIC__/static/h-ui/css/activitycenter.css" />
+<body>
+<!--_header 作为公共模版分离出去-->
+{include file="public/head" /}
+<div class = "mainbody" style=" background-color: #cecfdc;padding-bottom: 50px;   margin-top: 37px;">
+    <div>
+        <a class="hdbanner"></a>
+    </div>
+    <br>
+    <br>
+    <div class="main" >
+        <div class="header">全部活动</div>
+    </div>
+    <div id="activitywater" class="content" style="margin-left: 305px;">
+        <div class="activitywater col-lg-4">
+            <div class="activityheader bk-gray">
+            </div>
+            <div class="activitycontent">
+            <span>人人都是摄影师——发现之旅人人都是摄影师——发现之旅人人都是摄影师——发现之旅</span>
+                <br>
+                <span  style="color: #c9bfbf;">2017-11-12 11:12:11</span>
+            </div>
+            <div class="activityfooter">
+                <span style="margin-left: 364px;color: #c9bfbf;"><i class="Hui-iconfont" style="margin-right: 5px;">&#xe611;</i>256</span>
+                <span style="margin-left: 20px;color: #c9bfbf;"><i style="margin-right: 5px;" class="Hui-iconfont">&#xe646;</i>256</span>
+            </div>
+        </div>
+        <div class="activitywater col-lg-4"></div>
+        <div class="activitywater col-lg-4">
+            <div class="activityheader bk-gray" style="background-image: url(&quot;/static/static/h-ui/images/activity/旅行.jpg&quot;);">
+            </div>
+            <div class="activitycontent">
+                <span>旅行最大的意义，不在于能够见到更多的人，欣赏多美的风景，而是重新认识了自己</span> <br> <span class="f-r" style="color: #c9bfbf;margin-right: 41px;">2017-11-16</span>
+            </div>
+            <div class="activityfooter">
+                <span style="margin-left: 322px;color: #c9bfbf;"><i class="Hui-iconfont" style="margin-right: 5px;"></i>256</span>
+                <span style="margin-left: 10px;color: #c9bfbf;" class="f-r"><i style="margin-right: 5px;" class="Hui-iconfont"></i>256</span>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer mt-20">
+    <div class="container">
+        <nav class="footer-nav">
+            <a target="_blank" href="http://www.h-ui.net/aboutHui.shtml">关于H-ui</a>
+            <span class="pipe">|</span>
+            <a target="_blank" href="http://www.h-ui.net/copyright.shtml">软件著作权</a>
+            <span class="pipe">|</span>
+            <a target="_blank" href="http://www.h-ui.net/juanzeng.shtml">感谢捐赠</a>
+        </nav>
+        <p>Copyright &copy;2013-2017 H-ui.net All Rights Reserved. <br>
+            <a rel="nofollow" target="_blank" href="http://www.miitbeian.gov.cn/">京ICP备15015336号-1</a>
+            <br>
+            未经允许，禁止转载、抄袭、镜像<br>
+            用心做站，做不一样的站</p>
+    </div>
+</footer>
+
+
+
+
+
+<!--普通弹出层-->
+<script type="text/javascript" src="__STATIC__/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="__STATIC__/static/h-ui/js/H-ui.js"></script>
+<script type="text/javascript" src="__STATIC__/static/h-ui/js/head.js"></script>
+<script type="text/javascript" src="__STATIC__/static/h-ui/js/jcarousellite.min.js"></script>
+<!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript">
+        $.ajax({
+            type:'POST',
+            url:"{:url('activity/getAllActivityinfo')}",
+            data:{},
+            success:function (data) {
+               setactivity(data);
+            }
+        })
+    function setactivity(data) {
+            $("#activitywater").empty();
+            for(var i =0;i<data.length;i++) {
+                $("#activitywater").append("    <div onclick='toactivity(this,"+data[i].activity_id+")' class=\"activitywater col-lg-4\">\n" +
+                    "            <div class=\"activityheader bk-gray\">\n" +
+                    "            </div>\n" +
+                    "            <div class=\"activitycontent\">\n" +
+                    "            <span>"+data[i].activity_info+"</span> <br> <span  style=\"color: #c9bfbf;margin-left: 382px;\">"+data[i].begin_time+"</span>\n" +
+                    "            </div>\n" +
+                    "            <div class=\"activityfooter\">\n" +
+                    "                <span style=\"margin-left: 364px;color: #c9bfbf;\"><i class=\"Hui-iconfont\" style=\"margin-right: 5px;\">&#xe611;</i>256</span>\n" +
+                    "                <span style=\"margin-left: 20px;color: #c9bfbf;\"><i style=\"margin-right: 5px;\" class=\"Hui-iconfont\">&#xe646;</i>256</span>\n" +
+                    "            </div>\n" +
+                    "        </div>")
+                $("#activitywater").find(".activityheader:last").css("background-image","url(__STATIC__/static/h-ui/images/activity/"+data[i].activity_name+".jpg)");
+            }
+
+    }
+    function toactivity(type,id) {
+        window.location.href="../activity/activityinfo.html?" + id + ""
+    }
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+{include file="public/headjs" /}
+
+<script>
+</script>
+<!--/此乃百度统计代码，请自行删除-->
+</body>
+</html>

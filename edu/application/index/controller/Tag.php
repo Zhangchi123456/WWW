@@ -7,6 +7,7 @@ use app\index\model\Photo as PhotoMOdel;
 use app\index\model\Album as AlbumMOdel;
 use app\index\model\User as UserMOdel;
 use app\index\model\Tag as TagModel;
+use app\index\model\Attention as AttentionModel;
 use app\index\model\Pclick;
 use app\index\model\Pshare;
 use think\Session;
@@ -26,6 +27,7 @@ class Tag extends Base{
                     $tag = TagModel::all(["photo_id" => $value->photo_id]);
                     $userinfo = UserMOdel::get(["user_id" => $value->user_id]);
                     $albumname = AlbumMOdel::get(["album_id" => $value->album_id]);
+                    $attention = AttentionModel::get(["user_id"=>$value->user_id,"fans_id"=>$user_id]);
                     $data = [
                         'photo_id' => $value->photo_id,
                         'photo_name' => $value->photo_name,
@@ -40,6 +42,12 @@ class Tag extends Base{
                         'taglist' => $tag,
                         'user_info' => $userinfo
                     ];
+                    if($attention){
+                        $data['attention']='1';
+                    }
+                    else{
+                        $data['attention']='0';
+                    }
                     if ($isshare) {
                         $data['isshare'] = '1';
                     } else {

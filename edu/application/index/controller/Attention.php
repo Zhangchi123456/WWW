@@ -23,12 +23,31 @@ class Attention extends Base
         }
 
     }
+    function isAttention(Request $request){
+        $attention =AttentionModel::get(["fans_id"=>Session::get('user_id'),"user_id"=>Session::get("other_info.user_id")]);
+        if($attention){ return "1";}
+        return "0";
+    }
+    function dealAttention(Request $request){
+        $temp = $request->param("temp");
+        $date =date('Y-m-d H:i:s');
+        if($temp==1){
+            AttentionModel::create(["fans_id"=>Session::get('user_id'),"user_id"=>Session::get('other_info.user_id'),"creat_time"=>$date]);
+            return "关注成功";
+        }
+        else{
+            $attention = AttentionModel::get(["fans_id"=>Session::get('user_id'),"user_id"=>Session::get('other_info.user_id')]);
+            $attention->delete();
+            return "取消成功";
+        }
+    }
+
     function cancelAttention(Request $request){
         $id = $request->param('id');
         $attention = AttentionModel::get(["user_id"=>$id,"fans_id"=>Session::get('user_id')]);
         $attention->delete();
 
-        return['data'=>'取消成功'];
+        return "取消成功";
     }
     function  getFans(Request $request){
         $Attention=  AttentionModel::all(["user_id"=>Session::get('user_id')]);
@@ -36,10 +55,10 @@ class Attention extends Base
     }
     function  addAttention(Request $request){
         $date =date('Y-m-d H:i:s');
-        $Attention =AttentionModel::create(["photo_id"=>$request->param("photo_id"),"Attention"=>$request->param("Attention"),"creat_time"=>$date,"name"=>Session::get("user_info.name")]);
+        $Attention =AttentionModel::create(["user_id"=>$request->param("id"),"creat_time"=>$date,"fans_id"=>Session::get("user_info.user_id")]);
         if($Attention==true)
 
-            return["message"=>"评论成功","data"=>$Attention];
+            return "关注成功";
     }
 
 }

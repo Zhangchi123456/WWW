@@ -3,7 +3,7 @@
 <body>
 <!--_header 作为公共模版分离出去-->
 {include file="public/head" /}
-<div class="mainbody" style="background-color:  #98c2ed;;">
+<div class="mainbody" style="background-color: #e0e6cc;margin-top: -27px;">
     <div class="container ui-sortable">
         <div class="panel panel-default" style="margin-top: 64px;">
             <div class="panel-header top">
@@ -12,12 +12,14 @@
                          src="__STATIC__/image/{:session('other_info.name')}/{:session('other_info.photo')}" alt="" class="round">
 
                     <br>
-                    <p style="margin-left: 25px;  margin-top: -4px;  font-size: 26px;">{:session('other_info.name')}</p>
+                    <p style="margin-left: 25px;  margin-top: -4px;  font-size: 26px;"><u>{:session('other_info.name')}</u></p>
+                    <p  style="margin-top: -4px;  font-size: 16px;text-align: center;margin-left: -462px; ">{:session('user_info.introduction')}</p>
+                    <button  id="attentionbtn" onclick="attentionClick()" class="btn btn-warning radius" style="margin-left: 24px"></button>
                 </div>
             </div>
             <div class="panel-body">
                 <div id="tab" class="HuiTab">
-                    <div class="tabBar clearfix"><span style="width: 196px;">他的主页</span><span style="width: 258px;">他的相册</span></div>
+                    <div class="tabBar clearfix"><span style="width: 87px;padding-left: 238px;">他的主页</span><span style="width: 165px;padding-left: 221px;">他的相册</span></div>
                     <div class="tabCon">
                         <div class="col-lg-12">
                             <div class="panel share" style="background-color: rgba(240, 248, 255, 0.36);">
@@ -121,12 +123,50 @@
 <script type="text/javascript" src="__STATIC__/lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="__STATIC__/static/h-ui/js/H-ui.js"></script>
 <script type="text/javascript" src="__STATIC__/static/h-ui/js/head.js"></script>
-<script type="text/javascript" src="__STATIC__/static/h-ui.admin/js/H-ui.admin.page.js"></script>
+<script type="text/javascript" src="__STATIC__/static/h-ui/js/photo.js"></script>
 <!--/_footer /作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
 <!--/请在上方写此页面业务相关的脚本-->
 {include file="public/headjs" /}
+<!--关注按钮初始化-->
+<script>
+    $.ajax({
+        type:"GET",
+        url:"{:url('attention/isAttention')}",
+        data:{},
+        success:function (data) {
+            if(data==0){
+                $("#attentionbtn").append("<i class=\"Hui-iconfont\">&#xe600;</i>加关注");
+
+            }
+            else {
+                $("#attentionbtn").append("取消关注");
+            }
+        }
+    })
+    function  attentionClick() {
+        var temp = 1;
+        if($("#attentionbtn").text()=="取消关注"){
+            temp=0;
+        }
+        $.ajax({
+            type:'POST',
+            url:"{:url('attention/dealAttention')}",
+            data:{"temp":temp},
+            success:function (data) {
+                $.Huimodalalert(data,1000);
+                $("#attentionbtn").empty();
+                if(temp==1){
+                    $("#attentionbtn").append("取消关注");
+                }
+                else{
+                    $("#attentionbtn").append("<i class=\"Hui-iconfont\">&#xe600;</i>加关注");
+                }
+            }
+        })
+    }
+</script>
 <!--相册初始化-->
 <script>
     addalbumlist();
@@ -148,21 +188,16 @@
         document.getElementById("albumcenter").style.display = "block";
         $("#albumcenter").empty();
         for (var i = data.length-1; i >=0; i--) {
-            $("#albumcenter").append("<div class=\"panel photosmall box-shadow\">\n" +
-                "                                            <div style=\"font-family: monospace;\" class=\"panel-header small\">" + data[i].album_name + "\n" +
-                "                                              <span style=\"margin-left: 253px;font-size: 2px;\">创建时间:</span> <span>" + data[i].creat_time.replace('.',':').replace('.',':') + "</span>\n" +
-                "                                            </div>\n" +
-                "\n" +
-                "                                            <div class=\"panel-body\">\n" +
-                "                                                <img style=\"max-width: 264px; min-height: 199px;\" src=\"__STATIC__/image/" + "{:session('other_info.name')}/" + data[i].album_photo + "\" alt=\"\" class=\"thumbnail\">\n" +
-                "                                                <img style=\"max-width: 264px; min-height: 199px;\" src=\"__STATIC__/image/admin/adminzxc.jpg\" alt=\"\" class=\"thumbnail\">\n" +
-                "\n" +
-                "                                            </div>\n" +
-                "                                            <div class=\"panel-footer text-c\">\n" +
-                "                                                <a style=\"margin-left: 94px\" onclick='addphotolist(this)'name='"+data[i].album_name +"'>查看所有图片<i class=\"arrow Hui-iconfont\">&#xe6d7;</i></a>\n" +
-                "                                            </div>\n" +
-                "                                        </div>"
-            )
+            $("#albumcenter").append("   <div onclick=\"addphotolist(this)\" name=\""+data[i].album_name+"\" class=\"album-item col-lg-5 bk-gray radius\" >\n" +
+                "                                                <div class=\"album-img\">\n" +
+                "                                                    <img src=\"/static/image/"+"{:session('other_info.name')}/"+ data[i].album_photo +"\">\n" +
+                "                                                </div>\n" +
+                "                                                <div class=\"album-title\">" + data[i].album_name + "<span class=\"c-999\">(" + data[i].photonum + "张)</span></div>\n" +
+                "                                                <div class=\"album-bg\">\n" +
+                "                                                    <div class=\"album-bg-Fir\"></div>\n" +
+                "                                                    <div class=\"album-bg-Sec\"></div>\n" +
+                "                                                </div>\n" +
+                "                                            </div>")
         }
     }
 </script>
@@ -208,207 +243,16 @@
         obj.empty();
 
         for (var i = data.length-1; i>=0; i--) {
-            obj.append("  <div class=\"panel photosmall box-shadow\">\n" +
-                "                                            <div style=\"font-family: monospace;\" class=\"panel-header small\">\n" +
-                "                                                <img style=\"max-width: 40px;  min-height: 40px;\"\n" +
-                "                                                     src=\"__STATIC__/image/"+data[i].user_info.name+"/"+data[i].user_info.photo+"\" alt=\"\" class=\"round\">\n" +
-                "                                                <a onclick=\"tootherinfo("+data[i].user_info.user_id+",this)\"><u style='font-size: 20px;'>"+data[i].user_info.name+"</u></a>\n" +
-                "                                                <span class=\"f-r\">"+data[i].creat_time.replace('.',':').replace('.',':')+"</span><br>\n" +
-                "                                            <span class=\"f-r\">来自：<a onclick=\"toAlbum(this)\">"+data[i].albumname+"</a></span>\n" +
-                "                                                <br>\n" +
-                "                                                <p style=\"margin-bottom: 0px; margin-top: 6px;\">"+data[i].photo_info+"</p>\n" +
-                "                                            </div>\n" +
-                "                                            <div class=\"line\"></div>\n" +
-                "                                            <div class=\"panel-body\">\n" +
-                "                                                <img style=\"max-width: 516px;max-height: 199px;\"  src=\"__STATIC__/image/{:session('other_info.name')}/"+data[i].photo_name+"\" alt=\"\" class=\"thumbnail preview\">\n" +
-                "                                            </div>\n" +
-                "                                            <div class=\"panel-footer \">\n" +
-                "                                                <div class=\"text-l\">\n" +
-                "                                                    <span>标签:</span>\n" +
-                "                                                   \n" +
-                "                                                </div>\n" +
-                "                                                        <div class=\"text-r\">\n" +
-                "                                                <a onclick=\"addsharenum("+data[i].photo_id+",this)\" name='share'><i class=\"Hui-iconfont\">&#xe6ab;</i><span>"+data[i].sharenum+"</span></a>\n" +
-                "                                                    <span class=\"pipe\">|</span>\n" +
-                "                                                <a onclick=\"addclicknum("+data[i].photo_id+",this)\" name='click'><i class=\"Hui-iconfont\">&#xe66d;</i><span>"+data[i].clicknum+"</span></a>\n" +
-                "                                                    <span class=\"pipe\">|</span>\n" +
-                "                                              <a onclick=\"comlist("+data[i].photo_id+",this)\"><i class=\"Hui-iconfont\">&#xe6b3;</i><span>"+data[i].commentnum+"</span></a>\n" +
-                "                                                        </div>\n" +
-                "                                                    <div  class=\"hui-fadeinT\" >\n" +
-                "                                                        <ul class=\"commentList\" style=\"display: none;overflow-y: auto;max-height: 262px;\">\n" +
-                "                                                            <li class=\"item cl\"> <a href=\"#\"><i class=\"avatar size-L radius\"><img alt=\"\" src=\"http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg\"></i></a>\n" +
-                "                                                                <div class=\"comment-main\">\n" +
-                "                                                                    <header class=\"comment-header\">\n" +
-                "                                                                        <div class=\"comment-meta\"><a class=\"comment-author\" href=\"#\">辉哥</a> 评论于\n" +
-                "                                                                            <time title=\"2014年8月31日 下午3:20\" datetime=\"2014-08-31T03:54:20\">2014-8-31 15:20</time>\n" +
-                "                                                                        </div>\n" +
-                "                                                                    </header>\n" +
-                "                                                                    <div class=\"comment-body\">\n" +
-                "                                                                        <p>你是猴子派来的救兵吗？</p>\n" +
-                "                                                                    </div>\n" +
-                "                                                                </div>\n" +
-                "                                                            </li>\n" +
-                "                                                            <li>\n" +
-                "                                                                <div class=\"comment-main\">\n" +
-                "                                                                    <header class=\"comment-header\">\n" +
-                "\n" +
-                "                                                                    </header>\n" +
-                "                                                                    <div class=\"comment-body text-r\">\n" +
-                "                                                                <input type=\"text\" class=\"input-text\" placeholder=\"\"\n" +
-                "                                                                       name=\"albumlist\" id=\"\">\n" +
-                "                                                                    <button class=\" btn btn-primary-outline radius size-S hui-fadeinL\">发表评论</button>\n" +
-                "                                                                    </div>\n" +
-                "                                                                </div>\n" +
-                "                                                            </li>\n" +
-                "                                                        </ul>\n" +
-                "                                                    </div>\n" +
-                "                                            </div>\n" +
-                "\n" +
-                "                                        </div>")
-
-            for(var j =0;j<data[i].taglist.length;j++) {
-                obj.find(".text-l:last").append("<span type='button' style=\"cursor:pointer ; margin-left: 10px;color: #290a0a;\n" +
-                    "    background-color: #f0f8ff;\n" +
-                    "    border-color: #98c2ed;\" class='btn btn-primary radius  size-S'>"+data[i].taglist[j].tag+"</span>")
-            }
-            if(data[i].isshare==1){
-                obj.find("a[name='share']").css("color", "#412ccc");
-            }
-            if(data[i].isclick==1){
-                obj.find("a[name='click']").css("color", "#412ccc");
-            }
+            photoadd(data[i],obj);
         }
+        obj.find(".dropDown").empty();
 
-    }
-    function tootherinfo(name,type) {
-        alert(name);
-        $.ajax({
-            type:"POST",
-            url:"{:url('user/setOther')}",
-            data:{"username":name},
-            success:function (data) {
-                alert(data);
-                window.location.href= "{:url('user/Other_info')}";
-            }
-        })
     }
     function  toAlbum(type) {
         $("#tab").Huitab({
             index: 1
         });
         setAlbumphoto($(type).html());
-    }
-    function  addsharenum(id,type) {
-        alert(1);
-        if ($(type).css("color") != "rgb(65, 44, 204)") {
-            $(type).css("color", "#412ccc");
-            var sharenum = $(type).find("span").text();
-            $(type).find("span").text(parseInt(sharenum)+1);
-            $.ajax({
-                type:"POST",
-                url:"{:url('photo/addSharenum')}",
-                data:{"photo_id":id},
-                success:function (data) {
-
-                }
-            })
-        }
-    }
-    function  addclicknum(id,type) {
-
-        if ($(type).css("color") != "rgb(65, 44, 204)") {
-            $(type).css("color", "#412ccc");
-            var clicknum = $(type).find("span").text();
-            $(type).find("span").text(parseInt(clicknum)+1);
-            $.ajax({
-                type:"POST",
-                url:"{:url('photo/addClicknum')}",
-                data:{"photo_id":id},
-                success:function (data) {
-
-                }
-            })
-        }
-    }
-    function comlist(id,type) {
-        var obj =  $(type).parent().parent().find("ul");
-        if($(type).parent().parent().find("ul").css('display')=="none") {
-            $(type).parent().parent().find("ul").css("display", "block");
-
-            $.ajax({
-                type:"GET",
-                url:"{:url('comment/getComment')}",
-                data:{"photo_id":id},
-                success:function (data) {
-                    addCommentlist(data.data,obj,id);
-                }
-            })
-
-        }
-        else
-            $(type).parent().parent().find("ul").css("display","none");
-
-    }
-    function  addCommentlist(data,obj,id) {
-        obj.empty();
-        obj.append(" <li class=\"item cl\">\n" +
-            "                                                            <div class=\"comment-main\">\n" +
-            "                                                                <header class=\"comment-header\">\n" +
-            "\n" +
-            "                                                                </header>\n" +
-            "                                                                <div class=\"comment-body text-r\">\n" +
-            "                                                                    <input type=\"text\" class=\"input-text\" placeholder=\"\"\n" +
-            "                                                                           name=\"commenttext\" id=\"\">\n" +
-            "                                                                    <button onclick='commentbtn(this,"+id+")' class=\" btn btn-primary-outline radius size-S hui-fadeinL\">发表评论</button>\n" +
-            "                                                                </div>\n" +
-            "                                                            </div>\n" +
-            "                                                        </li>")
-        for(var i =0;i<data.length;i++){
-            obj.append("  <li class=\"item cl\"> <a href=\"#\"><i class=\"avatar size-L radius\"><img alt=\"\" src=\"http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg\"></i></a>\n" +
-                "                                                            <div class=\"comment-main\">\n" +
-                "                                                                <header class=\"comment-header\">\n" +
-                "                                                                    <div class=\"comment-meta\"><a class=\"comment-author\" href=\"#\">"+data[i].name+"</a> 评论于\n" +
-                "                                                                        <time title=\"2014年8月31日 下午3:20\" datetime=\"2014-08-31T03:54:20\">"+data[i].creat_time+"</time>\n" +
-                "                                                                    </div>\n" +
-                "                                                                </header>\n" +
-                "                                                                <div class=\"comment-body\">\n" +
-                "                                                                    <p>"+data[i].comment+"</p>\n" +
-                "                                                                </div>\n" +
-                "                                                            </div>\n" +
-                "                                                        </li>")
-        }
-
-    }
-    function  commentbtn(type ,id) {
-        var comment = $(type).parent().find("input").val();
-        var obj = $(type).parent().parent().parent();
-        if (comment == "") {
-            $.Huimodalalert("未填写内容",1000);
-
-        }
-        else {
-            $.ajax({
-                type:'POST',
-                url: "{:url('comment/addComment')}",
-                data:{"comment":comment,"photo_id":id},
-                success:function (data) {
-                    $.Huimodalalert(data.message,1000);
-                    obj.after("  <li class=\"item cl\"> <a href=\"#\"><i class=\"avatar size-L radius\"><img alt=\"\" src=\"http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg\"></i></a>\n" +
-                        "                                                            <div class=\"comment-main\">\n" +
-                        "                                                                <header class=\"comment-header\">\n" +
-                        "                                                                    <div class=\"comment-meta\"><a class=\"comment-author\" href=\"#\">"+data.data.name+"</a> 评论于\n" +
-                        "                                                                        <time title=\"2014年8月31日 下午3:20\" datetime=\"2014-08-31T03:54:20\">"+data.data.creat_time+"</time>\n" +
-                        "                                                                    </div>\n" +
-                        "                                                                </header>\n" +
-                        "                                                                <div class=\"comment-body\">\n" +
-                        "                                                                    <p>"+data.data.comment+"</p>\n" +
-                        "                                                                </div>\n" +
-                        "                                                            </div>\n" +
-                        "                                                        </li>")
-                    $(type).parent().find("input").val("");
-                }
-            })
-        }
     }
 </script>
 </body>

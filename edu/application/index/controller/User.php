@@ -52,6 +52,7 @@ class User extends Base
     public function updateUser(Request $request){
         $data = $request->param();
         $status = 0;
+
         $message = "添加失败(信息填写不完整)";
         $rule=[
             'name|用户名'=>'require',
@@ -66,17 +67,30 @@ class User extends Base
             'telephone' => ['require'=>'电话不能为空'],
         ];
         $result = $this -> validate($data,$rule,$meg);
+        $user=Session::get('user_info.name');
         if($result===true) {
+            if($request->param("uploadfile1")=="1") {
+                $url = "./static/image/" . $user . "/";
+                $date = date('Y-m-d H.i.s');
+                $imgname = $user . $date . ".jpg";
+                $ismoved = move_uploaded_file($_FILES['uploadfile']['tmp_name'], $url . $imgname);
+                $user = UserModel::update(['name' => $request->param('name'), 'password' => $request->param('password'),
+                    'email' => $request->param('email'), 'phone' => $request->param('telephone'), "photo" => $imgname], ['user_id' => Session::get('user_id')]);
 
-            $user = UserModel::update([ 'name' => $request->param('name'), 'password' => $request->param('password'),
-                'email' => $request->param('email'), 'phone' => $request->param('telephone')],['user_id'=>Session::get('user_id')]);
+            }
+            else{
+                $user = UserModel::update(['name' => $request->param('name'), 'password' => $request->param('password'),
+                    'email' => $request->param('email'), 'phone' => $request->param('telephone')],['user_id' => Session::get('user_id')]);
+
+            }
             if ($user === null) {
                 $status = 0;
                 $message = "更新失败";
             } else {
                 $status = 1;
                 $message = "更新成功";
-                Session::set('user_info',$user ->getData());
+                $user1 =UserModel::get(['user_id'=>Session::get('user_id')]);
+                    Session::set('user_info',$user1 ->getData());
             }
 
             return ["status" => $status, "message" => $message];
@@ -104,7 +118,6 @@ class User extends Base
         $user=$request->param('name');
         $result = $this -> validate($data,$rule,$meg);
         if($result===true) {
-
                 $url = "./static/image/" . $user . "/";
                 if (!is_dir("./static/image/" . $user))//当路径不穿在
                 {

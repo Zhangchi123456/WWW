@@ -7,6 +7,7 @@ use app\index\model\Photo as PhotoMOdel;
 use app\index\model\Album as AlbumMOdel;
 use app\index\model\User as UserMOdel;
 use app\index\model\Tag as TagModel;
+use app\index\model\Attention as AttentionModel;
 use app\index\model\Pclick;
 use app\index\model\Pshare;
 use think\Session;
@@ -69,8 +70,8 @@ class Photo extends Base{
         $albumname = $request->param("albumname");
         $user_id = Session::get("user_id");
         $user_id1=$request->param("user_id");
-        $album =AlbumMOdel::get(["album_name"=>$albumname,"user_id"=>$user_id1]);
-       $photolist= PhotoMOdel::all(["album_id"=>$album->album_id,"user_id"=>$user_id1]);
+        $album =AlbumMOdel::get(["album_name"=>$albumname,"user_id"=>$user_id1,"isuse"=>"1"]);
+       $photolist= PhotoMOdel::all(["album_id"=>$album->album_id,"user_id"=>$user_id1,"isuse"=>"1"]);
             foreach ($photolist as $value){
                 $isshare = Pshare::get(["user_id"=>$user_id,"photo_id"=>$value->photo_id]);
                 $isclick = Pclick::get(["user_id"=>$user_id,"photo_id"=>$value->photo_id]);
@@ -109,13 +110,14 @@ class Photo extends Base{
     public function getAlllist(Request $request){
         $user_id = Session::get("user_id");
         $user_id1=$request->param("user_id");
-        $photolist= PhotoMOdel::all(["user_id"=>$user_id1]);
+        $photolist= PhotoMOdel::all(["user_id"=>$user_id1,"isuse"=>"1"]);
         foreach ($photolist as $value){
            $album = AlbumMOdel::get(["album_id"=>$value->album_id]);
             $tag = TagModel::all(["photo_id"=>$value->photo_id]);
             $isshare = Pshare::get(["user_id"=>$user_id,"photo_id"=>$value->photo_id]);
             $isclick = Pclick::get(["user_id"=>$user_id,"photo_id"=>$value->photo_id]);
             $userinfo =UserMOdel::get(["user_id"=>$value->user_id]);
+            $attention = AttentionModel::get(["user_id"=>$value->user_id,"fans_id"=>$user_id]);
             $data=[
                 'photo_id'=>$value->photo_id ,
                 'photo_name'=>$value->photo_name,
@@ -142,6 +144,12 @@ class Photo extends Base{
             else{
                 $data['isclick']='0';
             }
+            if($attention){
+                $data['attention']='1';
+            }
+            else{
+                $data['attention']='0';
+            }
             $photolist1[] = $data;
         }
         return ["data"=>$photolist1];
@@ -155,6 +163,15 @@ class Photo extends Base{
 
         PShare::create(["photo_id"=>$request->param('photo_id'),"user_id"=>Session::get('user_id')]);
     }
-
+    public function  deletephoto(Request $request){
+         $id = $request->param("id");
+        $photo= PhotoMOdel::update(["isuse"=>"0"],["photo_id"=>$id]);
+         if($photo){
+             return "删除成功";
+         }
+         else{
+             return "删除失败";
+         }
+    }
 
 }
