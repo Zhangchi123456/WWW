@@ -4,39 +4,164 @@
 <body>
 <!--_header 作为公共模版分离出去-->
 {include file="public/head" /}
-<div class = "mainbody" style=" background-color: #cecfdc;padding-bottom: 50px;   margin-top: 37px;">
-    <div>
-        <a class="hdbanner"></a>
+<div class = "mainbody" style=" background-color: #f7f4bd;">
+    <div class="main" style="padding-bottom: 50px;  margin-left: 312px;    background-color: white;
+    width: 1094px; margin-top: 37px;" >
+        <div class="acinfo col-lg-7">
+            <a id="acpicture" class="hdbanner1"></a>
+        <!--<img id="acpicture" style="width: 100%;min-height: 340px;" src="__STATIC__/static/h-ui/images/activity/旅行.jpg">-->
+         <div id="acinfo" class="acintro">
+             简介：时至今日，摄影不单只是一个专业名词。摄影是一种生活方式，是一种习惯和爱好，
+             是一个话题和情绪；无论手机还是单反，无论专业还是业余，人人都可以成为摄影师：用相机去记录，用镜头来表达，用心去感受…
+         </div>
+            <!--<ul id="Huifold1" class="Huifold">-->
+                <!--<li class="item" >-->
+                    <!--<h4 style="color: #f89912;text-align: center;">查看详情<b>+</b></h4>-->
+                    <!--<div class="info" style="margin-left: -54px;">-->
+                        <!--<div class="hdnr" >-->
+                            <!--<div class="hdnrtit">活动规则</div>-->
+                            <!--<div class="hdnrtxt">-->
+                                <!--大赛主题：发现之旅<br>征稿题材：城市风光、自然、人文生活、旅拍、创意-->
+                                <!--<br>稿件要求：<br>1.所有稿件只接受jpg格式，500kb－10mb，不限机型。-->
+                                <!--<br>2.涉及到人物肖像权的作品需事先征得被摄者同意用来参赛。-->
+                                <!--<br>3.投稿作品必须是本人原创，合成作品所用素材必须是作者原创或者得到正版授权。-->
+                                <!--<br>4.所有投稿作品须保留大图，以便入围获奖后工作人员鉴别真伪。-->
+                                <!--<br>5.参赛作品必须填写标题，否则无法进入评奖-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="hdnr" style="">-->
+                            <!--<div class="hdnrtit">活动奖励</div>-->
+                            <!--<div class="hdnrtxt">一等奖（1名）：苹果手机Iphone8<br>二等奖（3名）：苹果手表Apple watch<br>三等奖（10名）：拍立得相机</div>-->
+                        <!--</div>-->
+                        <!--<div class="hdnr" style=""><div class="hdnrtit">评选机制</div>-->
+                            <!--<div class="hdnrtxt">-->
+                            <!--1.不分组别，单反和手机拍摄作品混合评选。<br>-->
+                            <!--2.设评选委员会，所有作品均由评委评审。<br>-->
+                            <!--3.作品点赞、分享和评论数量不作为获奖唯一条件，仅作评选条件。<br>-->
+                            <!--4.评选将于2017年12月中开始、月底揭晓。</div>-->
+                        <!--</div>-->
+                        <!--<div class="hdnr" style=""><div class="hdnrtit">活动说明</div>-->
+                            <!--<div class="hdnrtxt">1.所有参赛的用户都可以签约全景摄影师，单反拍摄的作品可在作者同意下优先录入全景图库。-->
+                                <!--<br>2.同一ID只可产生一个获奖作品，同一个用户只可以获奖一次。-->
+                            <!--<br>3.冒用他人作品参赛者，一经发现立刻取消参赛资格。情节严重者，保留追究其法律责任的权利。-->
+                            <!--<br>4.本次活动最终解释权归本网站所有。-->
+                        <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                <!--</li>-->
+            <!--</ul>-->
+        </div>
+        <div class="acinfo col-lg-4">
+                <div style="font-size: 16px;margin-left: 53px;margin-top: 39px;letter-spacing: 4px;">
+                    <span>距离结束还有</span><span id="enddays" style="padding: 19px;font-size: 45px;border: solid 1px #b7cace;">12</span><span>天</span>
+                    <br>
+                    <button onclick="addactivitybtn()" class="btn btn-warning radius size-L" style="margin-left: 63px;margin-top: 48px;"><i class="Hui-iconfont">&#xe650;</i>我要参加</button>
+                </div>
+
+        </div>
+
+        <div class="clear" style="clear:both"></div>
     </div>
-    <br>
-    <br>
-    <div class="main" >
-        <div class="header">全部活动</div>
-    </div>
-    <div id="activitywater" class="content" style="margin-left: 305px;">
-        <div class="activitywater col-lg-4">
-            <div class="activityheader bk-gray">
+    <div  style="padding-bottom: 50px;  margin-left: 312px;    background-color: white;
+             width: 1094px; margin-top: 37px;">
+        <div style="font-size: 25px;
+    margin-left: 16px;"> 参赛作品:</div>
+        <div class="btn-group right">
+            <span onclick="sortClick(this)" class="btn btn-default radius current">热门</span>
+            <span onclick="sortClick(this)" class="btn btn-default radius">我的</span>
+            <span onclick="sortClick(this)" class="btn btn-default radius">最新</span>
+            <span onclick="sortClick(this)" class="btn btn-default radius">全部</span>
+        </div>
+        <div class="acphotowater">
+            <div class="acphoto col-lg-3">
+            <div class="img">
+                <img  width="100%" height="150px"  src="__STATIC__/static/h-ui/images/activity/旅行.jpg">
             </div>
-            <div class="activitycontent">
-                <span>人人都是摄影师——发现之旅人人都是摄影师——发现之旅人人都是摄影师——发现之旅</span>
-                <br>
-                <span  style="color: #c9bfbf;">2017-11-12 11:12:11</span>
+            <div class="acuserinfo">
+                <img width="30px" height="30px" src="__STATIC__/static/h-ui/images/activity/旅行.jpg">
+                <span class="acname">admin</span>
+                <span class=" iconfont f-r"><i class="Hui-iconfont">&#xe649;</i>25</span>
             </div>
-            <div class="activityfooter">
-                <span style="margin-left: 364px;color: #c9bfbf;"><i class="Hui-iconfont" style="margin-right: 5px;">&#xe611;</i>256</span>
-                <span style="margin-left: 20px;color: #c9bfbf;"><i style="margin-right: 5px;" class="Hui-iconfont">&#xe646;</i>256</span>
+
+        </div >
+            <div class="acphoto col-lg-3">
+                <div class="img">
+                    <img  width="100%" height="150px"  src="__STATIC__/static/h-ui/images/activity/旅行.jpg">
+                </div>
+                <div class="acuserinfo">
+                    <img width="30px" height="30px" src="__STATIC__/static/h-ui/images/activity/旅行.jpg">
+                    <span class="acname">admin</span>
+                    <span class="iconfont f-r"><i class="Hui-iconfont">&#xe649;</i>25</span>
+                </div>
+
+            </div>
+            <div class="acphoto col-lg-3">
+                <div class="img">
+                    <img  width="100%" height="150px"  src="__STATIC__/static/h-ui/images/activity/旅行.jpg">
+                </div>
+                <div class="acuserinfo">
+                    <img width="30px" height="30px" src="__STATIC__/static/h-ui/images/activity/旅行.jpg">
+                    <span class="acname">admin</span>
+                    <span class="iconfont f-r"><i class="Hui-iconfont">&#xe649;</i>25</span>
+                </div>
+
+            </div>
+            <div class="acphoto col-lg-3">
+                <div class="img">
+                    <img  width="100%" height="150px"  src="__STATIC__/static/h-ui/images/activity/旅行.jpg">
+                </div>
+                <div class="acuserinfo">
+                    <img width="30px" height="30px" src="__STATIC__/static/h-ui/images/activity/旅行.jpg">
+                    <span class="acname" style="font-size: 18px;">admin</span>
+                    <span class="iconfont f-r"><i class="Hui-iconfont">&#xe649;</i>25</span>
+                </div>
+
             </div>
         </div>
-        <div class="activitywater col-lg-4"></div>
-        <div class="activitywater col-lg-4">
-            <div class="activityheader bk-gray" style="background-image: url(&quot;/static/static/h-ui/images/activity/旅行.jpg&quot;);">
+        <div class="clear" style="clear:both"></div>
+    </div>
+    <div style="height: 50px;width: 10px"> </div>
+    <div id="modal-photo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content radius" style="width: 827px;margin-left: -129px;">
+            <div class="modal-header">
+                <h3 class="modal-title">图片详情</h3>
+                <a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
             </div>
-            <div class="activitycontent">
-                <span>旅行最大的意义，不在于能够见到更多的人，欣赏多美的风景，而是重新认识了自己</span> <br> <span class="f-r" style="color: #c9bfbf;margin-right: 41px;">2017-11-16</span>
+            <div id="modalbody" class="modal-body">
             </div>
-            <div class="activityfooter">
-                <span style="margin-left: 322px;color: #c9bfbf;"><i class="Hui-iconfont" style="margin-right: 5px;"></i>256</span>
-                <span style="margin-left: 10px;color: #c9bfbf;" class="f-r"><i style="margin-right: 5px;" class="Hui-iconfont"></i>256</span>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="modal-upload" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content radius" style="width: 664px;margin-top: 65px; margin-left: -32px;">
+                <div class="modal-header">
+                    <h3 class="modal-title">上传图片</h3>
+                    <a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
+                </div >
+                <div id="modalbody1" class="modal-body">
+                    <div  >
+                        <input style="width: 98%;font-size: 16px;padding: 5px;" id="photoinfo" placeholder="添加描述"></div>
+                    <div style="margin-top: 24px;">
+                        <span class="btn-upload form-group">
+  <input class="input-text upload-url radius" type="text" name="uploadfile-1" id="uploadfile-1" readonly><a href="javascript:void();" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
+  <input type="file" multiple name="file-1" id="profile-1"   class="input-file"  onchange="changImg2(event)">
+</span>
+                        <br>
+                    <img  alt="暂无图片" class=" text-c"
+                         style="width: 426px; height: 250px; margin-top: 20px;    margin-left: 110px;" id="myImg2"
+                         src="__STATIC__/static/h-ui/images/background/prephoto.svg"</c:if>
+                    </div>
+                    <input id="uploadbtn" style="margin-left: 216px;margin-top: 29px;width: 203px;" class="btn btn-warning size-L hui-bounceinR f-c" type="button" value="&nbsp;&nbsp;发布&nbsp;&nbsp;">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+                </div>
             </div>
         </div>
     </div>
@@ -68,17 +193,250 @@
 <script type="text/javascript" src="__STATIC__/static/h-ui/js/H-ui.js"></script>
 <script type="text/javascript" src="__STATIC__/static/h-ui/js/head.js"></script>
 <script type="text/javascript" src="__STATIC__/static/h-ui/js/jcarousellite.min.js"></script>
+<script type="text/javascript" src="__STATIC__/static/h-ui/js/photo.js"></script>
 <!--/_footer /作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript">
+    var  photolist;
+    var url=decodeURI(location.href);
+      var  tmp1 = url.split("?")[1];
+      $.ajax({
+          type:"POST",
+          url:"{:url('activity/getActivityinfoByid')}",
+          data:{"id":tmp1},
+          success:function (data) {
+             init(data);
+          }
+      })
+    function init(data) {
+        $("#acpicture").css("background-image","url(__STATIC__/static/h-ui/images/activity/"+data.activity_name+".jpg)");
+        $("#acinfo").text(data.activity_info);
+        var myDate = new Date();
+        var now = myDate.toLocaleDateString().replace("/","-").replace("/","-");
+        var end = data.end_time.split(" ")[0];
+       $("#enddays").text(daysBetween(now,end));
+        setphoto(getacphoto());
 
+    }
+    function daysBetween(DateOne,DateTwo){
+
+        var OneMonth = DateOne.substring(5,DateOne.lastIndexOf ('-'));
+        var OneDay = DateOne.substring(DateOne.length,DateOne.lastIndexOf ('-')+1);
+        var OneYear = DateOne.substring(0,DateOne.indexOf ('-'));
+        var TwoMonth = DateTwo.substring(5,DateTwo.lastIndexOf ('-'));
+        var TwoDay = DateTwo.substring(DateTwo.length,DateTwo.lastIndexOf ('-')+1);
+        var TwoYear = DateTwo.substring(0,DateTwo.indexOf ('-'));
+
+        var cha=((Date.parse(OneMonth+'/'+OneDay+'/'+OneYear)- Date.parse(TwoMonth+'/'+TwoDay+'/'+TwoYear))/86400000);
+        return Math.abs(cha);
+    }
+    function getacphoto() {
+        var  photolist1;
+        $.ajax({
+            type:"POST",
+            url:"{:url('photo/getActivityPhoto')}",
+            data:{"id":tmp1},
+            async:false,
+            success:function (data) {
+                photolist=data.data;
+                 photolist1=data.data;
+            }
+        })
+        return photolist1;
+    }
+    function  sortClick(type) {
+        $(type).parent().find("span").removeClass("current");
+        $(type).addClass("current");
+        var text = $(type).text();
+        if(text=="热门"){
+            var photolist1 = photolist;
+            setphoto(getacphoto().sort(compare('sharenum','clicknum','commentnum')));
+        }
+        if(text=="最新"){
+
+            setphoto(getacphoto().sort(getlast('creat_time')));
+        }
+        if(text=="全部"){
+            setphoto(getacphoto());
+        }
+        if(text=="我的"){
+            var id = "{:session('user_id')}";
+           var photolist= getacphoto();
+            var myphotolist=new Array();
+            for(var i =0;i<photolist.length;i++){
+                if(photolist[i].user_id==id){
+                    myphotolist.push(photolist[i]);
+                }
+            }
+            if(myphotolist.length==0){
+                $.Huimodalalert("你未参加该活动","1000");
+            }
+            else {
+                setphoto(myphotolist);
+            }
+        }
+    }
+    function  setphoto(data) {
+            $(".acphotowater").empty();
+            for(var i =0;i<data.length;i++){
+                $(".acphotowater").append(" <div  class=\"acphoto col-lg-3\">\n" +
+                    "            <div class=\"img\">\n" +
+                    "                <img style='cursor: pointer' onclick='photomodal(this,"+i+")'  width=\"100%\" height=\"150px\"  src=\"__STATIC__/image/"+data[i].user_info.name+"/"+data[i].photo_name+"\">\n" +
+                    "            </div>\n" +
+                    "            <div class=\"acuserinfo\">\n" +
+                    "                <img  width=\"30px\" height=\"30px\" src=\"__STATIC__/image/"+data[i].user_info.name+"/"+data[i].user_info.photo+"\">\n" +
+                    "                <span class=\"acname\">"+data[i].user_info.name+"</span>\n" +
+                    "                <span onclick='clicknum(this,"+data[i].photo_id+","+i+")' class=\" iconfont f-r\"><i class=\"Hui-iconfont\">&#xe649;</i><span>"+data[i].clicknum+"</span></span>\n" +
+                    "            </div>\n" +
+                    "\n" +
+                    "        </div >")
+                if(data[i].isclick==1){
+                    $(".acphotowater").find(".iconfont:last").css("color", "red");
+                }
+            }
+    }
+    $("#Huifold1").Huifold({
+        titCell:'.item h4',
+        mainCell:'.item .info',
+        type:1,
+        trigger:'click',
+        className:"selected",
+        speed:"first",
+    });
+    function addactivitybtn() {
+        $("#modal-upload").modal("show");
+    }
+    function photomodal(type,id) {
+        $("#modalbody").empty();
+        $("#modalbody").append(" <div class=\"panel photosmall box-shadow\">\n" +
+            "            <div style=\"font-family: monospace;\" class=\"panel-header small\">\n" +
+            "                <img style=\"width: 40px;height: 40px;\" src=\"__STATIC__/image/"+photolist[id].user_info.name+"/"+photolist[id].user_info.photo+"\" alt=\"\" class=\"round\">\n" +
+            "                <a onclick=\"tootherinfo(1,this)\"><u style=\"font-size: 20px;\">admin</u></a>\n" +
+            "                <br> <span class=\"f-l\">"+photolist[id].creat_time+"</span>\n" +
+            "                <span onclick='clicknum(this,"+photolist[id].photo_id+","+id+")' style=\"font-size: 27px; color:rgb(240, 248, 255);\" class=\"iconfont f-r\"><i class=\"Hui-iconfont\">&#xe649;</i><span>"+photolist[id].clicknum+"</span></span>\n" +
+            "                <br>\n" +
+            "                <p style=\"margin-bottom: 0px; margin-top: 6px;\">"+photolist[id].photo_info+"</p>\n" +
+            "            </div>\n" +
+            "            <div class=\"line\"></div>\n" +
+            "            <div class=\"panel-body\">\n" +
+            "                <img src=\"__STATIC__/image/"+photolist[id].user_info.name+"/"+photolist[id].photo_name+"\" alt=\"\" class=\"thumbnail specialimg\">\n" +
+            "            </div>\n" +
+            "            <div class=\"panel-footer \">\n" +
+            "                <div class=\"text-r\">\n" +
+            "                    <a onclick=\"comlist(32,this)\"><i class=\"Hui-iconfont\"></i><span>0</span></a>\n" +
+            "                </div>\n" +
+            "                <div class=\"hui-fadeinT\">\n" +
+            "                    <ul class=\"commentList\" style=\"display: none;overflow-y: auto;max-height: 262px;\">\n" +
+            "                        <li>\n" +
+            "                            <div class=\"comment-main\">\n" +
+            "                                <header class=\"comment-header\">\n" +
+            "\n" +
+            "                                </header>\n" +
+            "                                <div class=\"comment-body text-r\">\n" +
+            "                                    <input type=\"text\" class=\"input-text\" placeholder=\"\" name=\"albumlist\" id=\"\">\n" +
+            "                                    <button class=\" btn btn-primary-outline radius size-S hui-fadeinL\">发表评论</button>\n" +
+            "                                </div>\n" +
+            "                            </div>\n" +
+            "                        </li>\n" +
+            "                    </ul>\n" +
+            "                </div>\n" +
+            "            </div>\n" +
+            "\n" +
+            "        </div></div>")
+        if(photolist[id].isclick==1){
+            $("#modalbody").find(".iconfont:last").css("color", "red");
+        }
+        $("#modal-photo").modal("show");
+    }
+    function  clicknum(type,id,num) {
+        if("{:session('user_id')}") {
+            if ($(type).css("color") == "rgb(240, 248, 255)") {
+                var clicknum = $(type).find("span").text();
+                $.ajax({
+                    type: "POST",
+                    url: "../photo/addClicknum",
+                    data: {"photo_id": id},
+                    success: function (data) {
+                        $(type).css("color", "red");
+                        $(type).find("span").text(parseInt(clicknum)+1);
+                        $(".acphotowater").find(".iconfont").each(function (index) {
+                            if(index==num){
+                                $(this).find("span").text(parseInt(clicknum)+1);
+                                $(this).css("color", "red");
+                            }
+                        })
+                    }
+                })
+            }
+        }
+        else {
+            $.Huimodalalert("请先登录",1000);
+        }
+
+    }
+    $("#uploadbtn").on('click', function (event) {
+        if($("#photoinfo").val()==""||$("#uploadfile-1").val()==""){
+             $.Huimodalalert("信息填写不完整",1000);
+         }
+         else {
+            var formdata = new FormData();
+            formdata.append("photo_info", $("#photoinfo").val());
+            formdata.append("activity_id",tmp1);
+            formdata.append("upload_file", $("#profile-1")[0].files[0]);
+            $.ajax({
+                type: "post",
+                url: "{:url('photo/upacphoto')}",
+                data: formdata,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                   alert(data);
+                   $("#modal-upload").modal("hide");
+                    getacphoto();
+
+                }
+
+            })
+        }
+    })
+//    $("#login").click(function () {
+//        alert(1);
+//         if($("#photoinfo").val()==""||$("#uploadfile-1").val()==""){
+//             $.Huimodalalert("信息填写不完整");
+//         }
+//         else {
+//
+//         }
+//
+//    })
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 {include file="public/headjs" /}
 
 <script>
+    $("#topnavt").find("li").each(function (index) {
+        $(this).removeClass("current");
+        if(index==1){
+            $(this).addClass("current");
+        }
+    })
+    function changImg2(e) {
+        for (var i = 0; i < e.target.files.length; i++) {
+            var file = e.target.files.item(i);
+            if (!(/^image\/.*$/i.test(file.type))) {
+                continue; //不是图片 就跳出这一次循环
+            }
+            //实例化FileReader API
+            var freader = new FileReader();
+            freader.readAsDataURL(file);
+            freader.onload = function (e) {
+                $("#myImg2").attr("src", e.target.result);
+            };
+        }
+    }
 </script>
+
 <!--/此乃百度统计代码，请自行删除-->
 </body>
 </html>

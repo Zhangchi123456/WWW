@@ -35,10 +35,16 @@ class User extends Base
     }
     public function setOther(Request $request){
         $otherid = $request->param("username");
-        $user = UserModel::get(["user_id"=>$otherid]);
-        Session::set("other_id",$user->user_id);
-        Session::set("other_info",$user->getData());
-        return["message"=>$user->user_id];
+        $userid=Session::get("user_id");
+        if($userid==$otherid){
+            return 1;
+        }
+        else {
+            $user = UserModel::get(["user_id" => $otherid]);
+            Session::set("other_id", $user->user_id);
+            Session::set("other_info", $user->getData());
+            return 0;
+        }
     }
     public function checkName(Request $request){
         $name = trim($request->param('name'));
@@ -163,11 +169,14 @@ class User extends Base
         $rule =[
             'name|用户名' => 'require',
             'password|密码' => 'require',
+            'verify|验证码' =>'require|captcha'
 
         ];
         $meg=[
             'name' => ['require'=>'用户名不能为空'],
             'password' => ['require'=>'密码不能为空'],
+            'verify' =>['require'=>'验证码不能为空',
+                'captcha'=>'验证码错误'],
         ];
         $result=$this -> validate($data,$rule,$meg);
         if($result===true){

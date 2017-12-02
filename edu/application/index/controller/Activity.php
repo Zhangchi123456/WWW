@@ -24,6 +24,11 @@ class Activity extends Base{
           $activity=ActivityModel::get(["activity_name"=>$name]);
           return $activity;
       }
+    public  function  getActivityinfoByid(Request $request){
+        $name = $request->param("id");
+        $activity=ActivityModel::get(["activity_id"=>$name]);
+        return $activity;
+    }
       public  function  checkActivityName(Request $request){
           $name = $request->param("name");
           $activity = ActivityModel::get(["activity_name"=>$name]);

@@ -5,7 +5,7 @@
 <!--_header 作为公共模版分离出去-->
 
 {include file="public/head" /}
-<div class = "mainbody" style="background-color: #f7f7f6;margin-top: 40px;" >
+<div class = "mainbody" style="background-color: #f7f4bd;margin-top: 40px;" >
     <div class="taglist">
         <p class="hottag">热门标签:</p>
         <span onclick="tagclick(this)" style="margin-left: 103px;">旅行</span>
@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="btn-group center">
-        <span onclick="sortClick(this)" class="btn btn-primary radius">精选</span>
+        <span onclick="sortClick(this)" class="btn btn-default radius current">精选</span>
         <span onclick="sortClick(this)" class="btn btn-default radius">热门</span>
         <span onclick="sortClick(this)" class="btn btn-default radius">最新</span>
         <span onclick="sortClick(this)" class="btn btn-default radius">查看全部</span>
@@ -596,6 +596,8 @@
 
     }
     function  sortClick(type) {
+        $(type).parent().find("span").removeClass("current");
+        $(type).addClass("current");
         var text = $(type).text();
         if(text=="热门"){
             var photolist1 = photolist.sort(compare('sharenum','clicknum','commentnum'));
